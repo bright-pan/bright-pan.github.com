@@ -87,3 +87,4 @@ exclude_generator:
 deploy:
   type: github
   repo: https://github.com/bright-pan/bright-pan.github.com.git
+  branch: master
