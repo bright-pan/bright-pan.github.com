@@ -17,6 +17,8 @@
     title = 'Category: ' + page.category;
   } else if (is_tag()){
     title = 'Tag: ' + page.tag;
+  } else if(page.current > 1){
+  title = '第'+page.current+'页';
   }
   %>
     <title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
