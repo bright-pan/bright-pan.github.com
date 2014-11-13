@@ -1,7 +1,7 @@
 title: ubuntu的apt源设置
 date: 2014-11-13 16:46:53
 categories: [ubuntu]
-tags:[ubuntu,apt]
+tags: [ubuntu,apt]
 ---
 ``` sh
 $emacs /etc/apt/sources.list
