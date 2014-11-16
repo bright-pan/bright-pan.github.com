@@ -8,17 +8,16 @@ $emacs /etc/apt/sources.list
 ```
 替换成如下内容：
 ```
-deb http://debian.ustc.edu.cn/ubuntu/ trusty main restricted universe multiverse
-deb http://debian.ustc.edu.cn/ubuntu/ trusty-security main restricted universe multiverse
-deb http://debian.ustc.edu.cn/ubuntu/ trusty-updates main restricted universe multiverse
-deb http://debian.ustc.edu.cn/ubuntu/ trusty-proposed main restricted universe multiverse
-deb http://debian.ustc.edu.cn/ubuntu/ trusty-backports main restricted universe multiverse
-deb-src http://debian.ustc.edu.cn/ubuntu/ trusty main restricted universe multiverse
-deb-src http://debian.ustc.edu.cn/ubuntu/ trusty-security main restricted universe multiverse
-deb-src http://debian.ustc.edu.cn/ubuntu/ trusty-updates main restricted universe multiverse
-deb-src http://debian.ustc.edu.cn/ubuntu/ trusty-proposed main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse
-deb-src http://debian.ustc.edu.cn/ubuntu/ trusty-backports main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty-backports main restricted universe multiverse
 ```
 然后更新apt库：
 ``` sh
