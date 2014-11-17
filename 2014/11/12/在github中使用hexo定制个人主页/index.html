@@ -1,0 +1,436 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>在github中使用hexo定制个人博客 | 图符</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Bright Pan">
+    
+    <meta name="description" content="建立开发环境
+注册github帐号
+
+请自行去github中注册帐号，并创建一个以(帐号名.github.com)为名称的代码仓库。
+
+安装git和node.js
+1234$sudo apt-get git-core$sudo apt-get install nodejs-dev$sudo apt-">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="图符" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="图符" title="图符"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="图符">图符</a></h1>
+				<h2 class="blog-motto">一个人的世界</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">存档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:bright-pan@github.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/11/12/在github中使用hexo定制个人主页/" title="在github中使用hexo定制个人博客" itemprop="url">在github中使用hexo定制个人博客</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://bright-pan@github.com" title="Bright Pan">Bright Pan</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-11-13T05:57:12.000Z" itemprop="datePublished">11月 12 2014</time>
+    更新日期:<time datetime="2014-11-14T07:34:16.000Z" itemprop="dateModified">11月 13 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#建立开发环境"><span class="toc-number">1.</span> <span class="toc-text">建立开发环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册github帐号"><span class="toc-number">1.1.</span> <span class="toc-text">注册github帐号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装git和node-js"><span class="toc-number">1.2.</span> <span class="toc-text">安装git和node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装hexo并生成初始博客模板"><span class="toc-number">1.3.</span> <span class="toc-text">安装hexo并生成初始博客模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置与部署"><span class="toc-number">2.</span> <span class="toc-text">配置与部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改配置文件_config-yml"><span class="toc-number">2.1.</span> <span class="toc-text">修改配置文件_config.yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布到github"><span class="toc-number">2.2.</span> <span class="toc-text">发布到github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加RSS"><span class="toc-number">2.3.</span> <span class="toc-text">添加RSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加sitemap"><span class="toc-number">2.4.</span> <span class="toc-text">添加sitemap</span></a></li></ol></li></ol>
+		</div>
+		
+		<h2 id="建立开发环境">建立开发环境</h2>
+<h3 id="注册github帐号">注册github帐号</h3>
+<blockquote>
+<p>请自行去<a href="https://www.github.com/" target="_blank" rel="external">github</a>中注册帐号，并创建一个以(帐号名.github.com)为名称的代码仓库。</p>
+</blockquote>
+<h3 id="安装git和node-js">安装git和node.js</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> apt-get git-core</div><div class="line"><span class="variable">$sudo</span> apt-get install nodejs-dev</div><div class="line"><span class="variable">$sudo</span> apt-get install npm</div><div class="line"><span class="variable">$sudo</span> apt-get install npm-legacy</div></pre></td></tr></table></figure>
+
+<h3 id="安装hexo并生成初始博客模板">安装hexo并生成初始博客模板</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> npm install -g hexo</div><div class="line"><span class="variable">$hexo</span> init &lt;folder&gt;</div><div class="line"><span class="variable">$cd</span> &lt;folder&gt;</div><div class="line"><span class="variable">$npm</span> install</div><div class="line"><span class="variable">$hexo</span> server</div></pre></td></tr></table></figure>
+
+<p>然后在浏览器里打开<a href="http://localhost:4000" target="_blank" rel="external"><em>http://localhost:4000</em></a></p>
+<h2 id="配置与部署">配置与部署</h2>
+<h3 id="修改配置文件_config-yml">修改配置文件_config.yml</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#Hexo Configuration</span></div><div class="line"><span class="preprocessor">##Docs: http://hexo.io/docs/configuration.html</span></div><div class="line"><span class="preprocessor">##Source: https://github.com/hexojs/hexo/</span></div><div class="line"><span class="preprocessor">#Site</span></div><div class="line"><span class="label">title:</span> 图符</div><div class="line"><span class="label">subtitle:</span> 一个人的世界</div><div class="line"><span class="label">description:</span></div><div class="line"><span class="label">author:</span> Bright Pan</div><div class="line"><span class="label">email:</span> bright_pan<span class="localvars">@163</span>.com</div><div class="line"><span class="label">language:</span> <span class="built_in">zh</span>-CN</div><div class="line"><span class="preprocessor">#URL</span></div><div class="line"><span class="preprocessor">##If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="label">url:</span> http://yoursite.com</div><div class="line"><span class="label">root:</span> /</div><div class="line"><span class="label">permalink:</span> :year/:month/:day/:title/</div><div class="line"><span class="label">tag_dir:</span> tags</div><div class="line"><span class="label">archive_dir:</span> archives</div><div class="line"><span class="label">category_dir:</span> categories</div><div class="line"><span class="label">code_dir:</span> downloads/code</div><div class="line"><span class="label">permalink_defaults:</span></div><div class="line"><span class="preprocessor">#Directory</span></div><div class="line"><span class="label">source_dir:</span> source</div><div class="line"><span class="label">public_dir:</span> public</div><div class="line"><span class="preprocessor">#Writing</span></div><div class="line"><span class="label">new_post_name:</span> :title.md <span class="preprocessor"># File name of new posts</span></div><div class="line"><span class="label">default_layout:</span> post</div><div class="line"><span class="label">titlecase:</span> false <span class="preprocessor"># Transform title into titlecase</span></div><div class="line"><span class="label">external_link:</span> true <span class="preprocessor"># Open external links in new tab</span></div><div class="line"><span class="label">filename_case:</span> <span class="number">0</span></div><div class="line"><span class="label">render_drafts:</span> false</div><div class="line"><span class="label">post_asset_folder:</span> false</div><div class="line"><span class="label">relative_link:</span> false</div><div class="line"><span class="label">highlight:</span></div><div class="line">  enable: true</div><div class="line">    line_number: true</div><div class="line">	  tab_replace:</div><div class="line"><span class="preprocessor">#Category & Tag</span></div><div class="line"><span class="label">default_category:</span> uncategorized</div><div class="line"><span class="label">category_map:</span></div><div class="line"><span class="label">tag_map:</span></div><div class="line"><span class="preprocessor">#Archives</span></div><div class="line"><span class="preprocessor">##2: Enable pagination</span></div><div class="line"><span class="preprocessor">##1: Disable pagination</span></div><div class="line"><span class="preprocessor">##0: Fully Disable</span></div><div class="line"><span class="label">archive:</span> <span class="number">2</span></div><div class="line"><span class="label">category:</span> <span class="number">2</span></div><div class="line"><span class="label">tag:</span> <span class="number">2</span></div><div class="line"><span class="preprocessor">#Server</span></div><div class="line"><span class="preprocessor">##Hexo uses Connect as a server</span></div><div class="line"><span class="preprocessor">##You can customize the logger format as defined in</span></div><div class="line"><span class="preprocessor">##http://www.senchalabs.org/connect/logger.html</span></div><div class="line"><span class="label">port:</span> <span class="number">4000</span></div><div class="line"><span class="label">server_ip:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.12</span></div><div class="line"><span class="label">logger:</span> false</div><div class="line"><span class="label">logger_format:</span> dev</div><div class="line"><span class="preprocessor">#Date / Time format</span></div><div class="line"><span class="preprocessor">##Hexo uses Moment.js to parse and display date</span></div><div class="line"><span class="preprocessor">##You can customize the date format as defined in</span></div><div class="line"><span class="preprocessor">##http://momentjs.com/docs/#/displaying/format/</span></div><div class="line"><span class="label">date_format:</span> MMM D YYYY</div><div class="line"><span class="label">time_format:</span> H:mm:ss</div><div class="line"><span class="preprocessor">#Pagination</span></div><div class="line"><span class="preprocessor">##Set per_page to 0 to disable pagination</span></div><div class="line"><span class="label">per_page:</span> <span class="number">10</span></div><div class="line"><span class="label">pagination_dir:</span> page</div><div class="line"><span class="preprocessor">#Disqus</span></div><div class="line"><span class="label">disqus_shortname:</span></div><div class="line"><span class="preprocessor">#Extensions</span></div><div class="line"><span class="preprocessor">##Plugins: https://github.com/hexojs/hexo/wiki/Plugins</span></div><div class="line"><span class="preprocessor">##Themes: https://github.com/hexojs/hexo/wiki/Themes</span></div><div class="line"><span class="label">theme:</span> pacman</div><div class="line"><span class="label">exclude_generator:</span></div><div class="line"><span class="preprocessor">#Deployment</span></div><div class="line"><span class="preprocessor">##Docs: http://hexo.io/docs/deployment.html</span></div><div class="line"><span class="label">deploy:</span></div><div class="line"><span class="label">type:</span> github</div><div class="line"><span class="label">repo:</span> https://github.com/bright-pan/bright-pan.github.com.git <span class="preprocessor">#填入第一步里自己创建的代码仓库。</span></div><div class="line"><span class="label">branch:</span> master</div></pre></td></tr></table></figure>
+
+<h3 id="发布到github">发布到github</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$hexo</span> generate</div><div class="line"><span class="variable">$hexo</span> deploy</div></pre></td></tr></table></figure>
+
+<h3 id="添加RSS">添加RSS</h3>
+<p>hexo提供了RSS的生成插件，需要手动安装和设置。步骤如下：</p>
+<ul>
+<li>安装RSS插件到本地：<code>npm install hexo-generator-feed</code></li>
+<li>开启RSS功能：编辑<code>hexo/_config.yml</code>，添加如下代码：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plugin<span class="variable">s:</span></div><div class="line">- hexo-generator-feed</div></pre></td></tr></table></figure>
+
+<p>在站点添加链接：</p>
+<ul>
+<li>在<code>themes/light/_config.yml</code>中，编辑 <code>rss: /atom.xml</code></li>
+<li>在<code>themes/light/layout/_partial/header.ejs</code>中，<code>&lt;ul&gt;&lt;/ul&gt;</code>之间，添加一样代码<code>&lt;li&gt; &lt;a href=&quot;/atom.xml&quot;&gt;RSS&lt;/a&gt; &lt;/li&gt;</code></li>
+</ul>
+<h3 id="添加sitemap">添加sitemap</h3>
+<p>同样的，我们使用hexo提供的插件，方法与添加RSS类似。</p>
+<ul>
+<li>安装sitemap到本地：<code>npm install hexo-generator-sitemap</code></li>
+<li>开启sitemap功能：编辑hexo/_config.yml，添加如下代码：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plugin<span class="variable">s:</span></div><div class="line">- hexo-generator-sitemap</div></pre></td></tr></table></figure>
+
+<p>访问zipperary/sitemap.xml即可看到站点地图。不过，sitemap的初衷是给搜索引擎看。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a><a href="/tags/github/">github</a><a href="/tags/nodejs/">nodejs</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/hexo/">hexo</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://bright-pan@github.com/2014/11/12/在github中使用hexo定制个人主页/" data-title="在github中使用hexo定制个人博客 | 图符" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/11/13/自动温水兑换装置的想法/" title="自动温水兑换装置的想法">
+  <strong>上一篇:</strong><br/>
+  <span>
+  自动温水兑换装置的想法</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#建立开发环境"><span class="toc-number">1.</span> <span class="toc-text">建立开发环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册github帐号"><span class="toc-number">1.1.</span> <span class="toc-text">注册github帐号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装git和node-js"><span class="toc-number">1.2.</span> <span class="toc-text">安装git和node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装hexo并生成初始博客模板"><span class="toc-number">1.3.</span> <span class="toc-text">安装hexo并生成初始博客模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置与部署"><span class="toc-number">2.</span> <span class="toc-text">配置与部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改配置文件_config-yml"><span class="toc-number">2.1.</span> <span class="toc-text">修改配置文件_config.yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布到github"><span class="toc-number">2.2.</span> <span class="toc-text">发布到github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加RSS"><span class="toc-number">2.3.</span> <span class="toc-text">添加RSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加sitemap"><span class="toc-number">2.4.</span> <span class="toc-text">添加sitemap</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">8</span></li></ul>
+  </div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		
+			<li><a href="/categories/ubuntu/" title="ubuntu">ubuntu<sup>2</sup></a></li>
+		
+			<li><a href="/categories/加解密/" title="加解密">加解密<sup>1</sup></a></li>
+		
+			<li><a href="/categories/设备/" title="设备">设备<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/apt/" title="apt">apt<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/gnupg/" title="gnupg">gnupg<sup>1</sup></a></li>
+		
+			<li><a href="/tags/gpg/" title="gpg">gpg<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		
+			<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>2</sup></a></li>
+		
+			<li><a href="/tags/中文路径/" title="中文路径">中文路径<sup>1</sup></a></li>
+		
+			<li><a href="/tags/构思/" title="构思">构思<sup>1</sup></a></li>
+		
+			<li><a href="/tags/网络配置/" title="网络配置">网络配置<sup>1</sup></a></li>
+		
+			<li><a href="/tags/脚本/" title="脚本">脚本<sup>1</sup></a></li>
+		
+			<li><a href="/tags/装置/" title="装置">装置<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://bright-pan@github.com" target="_blank" title="Bright Pan">Bright Pan</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bright-pan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+  </body>
+</html>

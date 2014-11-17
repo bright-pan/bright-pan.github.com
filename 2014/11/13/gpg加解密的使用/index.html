@@ -1,0 +1,474 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>gpg加解密的使用 | 图符</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Bright Pan">
+    
+    <meta name="description" content="安装
+1234567891011121314$sudo apt-get install gnupg$gpg --versiongpg (GnuPG) 1.4.16Copyright (C) 2013 Free Software Foundation, Inc.License GPLv3+: GNU ">
+    
+    
+    
+    
+    <link rel="alternate" href="/atom.xml" title="图符" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="图符" title="图符"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="图符">图符</a></h1>
+				<h2 class="blog-motto">一个人的世界</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">存档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:bright-pan@github.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/11/13/gpg加解密的使用/" title="gpg加解密的使用" itemprop="url">gpg加解密的使用</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://bright-pan@github.com" title="Bright Pan">Bright Pan</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-11-13T23:23:18.000Z" itemprop="datePublished">11月 13 2014</time>
+    更新日期:<time datetime="2014-11-14T07:34:16.000Z" itemprop="dateModified">11月 13 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成密钥对"><span class="toc-number">2.1.</span> <span class="toc-text">生成密钥对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成撤销证书"><span class="toc-number">2.2.</span> <span class="toc-text">生成撤销证书</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#打印钥匙列表"><span class="toc-number">3.1.</span> <span class="toc-text">打印钥匙列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除钥匙"><span class="toc-number">3.2.</span> <span class="toc-text">删除钥匙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出钥匙"><span class="toc-number">3.3.</span> <span class="toc-text">输出钥匙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传公钥"><span class="toc-number">3.4.</span> <span class="toc-text">上传公钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入密钥"><span class="toc-number">3.5.</span> <span class="toc-text">输入密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加密"><span class="toc-number">3.6.</span> <span class="toc-text">加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解密"><span class="toc-number">3.7.</span> <span class="toc-text">解密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对文件签名"><span class="toc-number">3.8.</span> <span class="toc-text">对文件签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#签名+加密"><span class="toc-number">3.9.</span> <span class="toc-text">签名+加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证签名"><span class="toc-number">3.10.</span> <span class="toc-text">验证签名</span></a></li></ol></li></ol>
+		</div>
+		
+		<h2 id="安装">安装</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> apt-get install gnupg</div><div class="line"><span class="variable">$gpg</span> --version</div><div class="line">gpg (GnuPG) <span class="number">1.4</span>.<span class="number">16</span></div><div class="line">Copyright (C) <span class="number">2013</span> Free Software Foundation, Inc.</div><div class="line">License GPLv3+: GNU GPL version <span class="number">3</span> or later &lt;http://gnu.org/licenses/gpl.html&gt;</div><div class="line">This is free software: you are free to change and redistribute it.</div><div class="line">There is NO WARRANTY, to the extent permitted by law.</div><div class="line">Home: ~/.gnupg</div><div class="line">支持的算法：</div><div class="line">公钥： RSA, RSA-E, RSA-S, ELG-E, DSA</div><div class="line">对称加密： IDEA, <span class="number">3</span>DES, CAST5, BLOWFISH, AES, AES192, AES256,</div><div class="line">TWOFISH, CAMELLIA128, CAMELLIA192, CAMELLIA256</div><div class="line">散列： MD5, SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224</div><div class="line">压缩： 不压缩, ZIP, ZLIB, BZIP2</div></pre></td></tr></table></figure>
+
+<h2 id="配置">配置</h2>
+<h3 id="生成密钥对">生成密钥对</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">$ gpg --gen-key</div><div class="line">gpg (GnuPG) <span class="number">1.4</span>.<span class="number">16</span>; Copyright (C) <span class="number">2013</span> Free Software Foundation, Inc.</div><div class="line">This is free software: you are free to change and redistribute it.</div><div class="line">There is NO WARRANTY, to the extent permitted by law.</div><div class="line"></div><div class="line">请选择您要使用的密钥种类：</div><div class="line">(<span class="number">1</span>) RSA and RSA (default)</div><div class="line">(<span class="number">2</span>) DSA and Elgamal</div><div class="line">(<span class="number">3</span>) DSA (仅用于签名)</div><div class="line">(<span class="number">4</span>) RSA (仅用于签名)</div><div class="line">您的选择？ <span class="number">1</span></div><div class="line">RSA 密钥长度应在 <span class="number">1024</span> 位与 <span class="number">4096</span> 位之间。</div><div class="line">您想要用多大的密钥尺寸？(<span class="number">2048</span>)</div><div class="line">您所要求的密钥尺寸是 <span class="number">2048</span> 位</div><div class="line">请设定这把密钥的有效期限。</div><div class="line"><span class="number">0</span> = 密钥永不过期</div><div class="line">&lt;n&gt;  = 密钥在 n 天后过期</div><div class="line">&lt;n&gt;w = 密钥在 n 周后过期</div><div class="line">&lt;n&gt;m = 密钥在 n 月后过期</div><div class="line">&lt;n&gt;y = 密钥在 n 年后过期</div><div class="line">密钥的有效期限是？(<span class="number">0</span>)</div><div class="line">密钥永远不会过期</div><div class="line">以上正确吗？(y/n) y</div><div class="line"></div><div class="line">您需要一个用户标识来辨识您的密钥；本软件会用真实姓名、注释和电子邮件地址组合</div><div class="line">成用户标识，如下所示：</div><div class="line">“Heinrich Heine (Der Dichter) &lt;heinrichh@duesseldorf.de&gt;”</div><div class="line"></div><div class="line">真实姓名： Bright Pan</div><div class="line">电子邮件地址： bright_pan@<span class="number">163</span>.om</div><div class="line">注释：</div><div class="line">gpg: Interrupt caught ... exiting</div><div class="line">bright@bright-ThinkPad-X200-Tablet:~$ gpg --gen-key</div><div class="line">gpg (GnuPG) <span class="number">1.4</span>.<span class="number">16</span>; Copyright (C) <span class="number">2013</span> Free Software Foundation, Inc.</div><div class="line">This is free software: you are free to change and redistribute it.</div><div class="line">There is NO WARRANTY, to the extent permitted by law.</div><div class="line">请选择您要使用的密钥种类：</div><div class="line">(<span class="number">1</span>) RSA and RSA (default)</div><div class="line">(<span class="number">2</span>) DSA and Elgamal</div><div class="line">(<span class="number">3</span>) DSA (仅用于签名)</div><div class="line">(<span class="number">4</span>) RSA (仅用于签名)</div><div class="line">您的选择？</div><div class="line">RSA 密钥长度应在 <span class="number">1024</span> 位与 <span class="number">4096</span> 位之间。</div><div class="line">您想要用多大的密钥尺寸？(<span class="number">2048</span>)</div><div class="line">您所要求的密钥尺寸是 <span class="number">2048</span> 位</div><div class="line">请设定这把密钥的有效期限。</div><div class="line"><span class="number">0</span> = 密钥永不过期</div><div class="line">&lt;n&gt;  = 密钥在 n 天后过期</div><div class="line">&lt;n&gt;w = 密钥在 n 周后过期</div><div class="line">&lt;n&gt;m = 密钥在 n 月后过期</div><div class="line">&lt;n&gt;y = 密钥在 n 年后过期</div><div class="line">密钥的有效期限是？(<span class="number">0</span>)</div><div class="line">密钥永远不会过期</div><div class="line">以上正确吗？(y/n) y</div><div class="line">您需要一个用户标识来辨识您的密钥；本软件会用真实姓名、注释和电子邮件地址组合</div><div class="line">成用户标识，如下所示：</div><div class="line">“Heinrich Heine (Der Dichter) &lt;heinrichh@duesseldorf.de&gt;”</div><div class="line">真实姓名： Bright Pan</div><div class="line">电子邮件地址： bright_pan@<span class="number">163</span>.com</div><div class="line">注释： ShenZhen</div><div class="line">您选定了这个用户标识：</div><div class="line">“Bright Pan (ShenZhen) &lt;bright_pan@<span class="number">163</span>.com&gt;”</div><div class="line">更改姓名(N)、注释(C)、电子邮件地址(E)或确定(O)/退出(Q)？ O</div><div class="line">您需要一个密码来保护您的私钥。</div><div class="line">gpg: gpg-agent 在此次会话中无法使用</div><div class="line">我们需要生成大量的随机字节。这个时候您可以多做些琐事(像是敲打键盘、移动</div><div class="line">鼠标、读写硬盘之类的)，这会让随机数字发生器有更好的机会获得足够的熵数。</div><div class="line">随机字节不够多。请再做一些其他的琐事，以使操作系统能搜集到更多的熵！</div><div class="line">(还需要<span class="number">185</span>字节)</div><div class="line">.+++++</div><div class="line">.+++++</div><div class="line">我们需要生成大量的随机字节。这个时候您可以多做些琐事(像是敲打键盘、移动</div><div class="line">鼠标、读写硬盘之类的)，这会让随机数字发生器有更好的机会获得足够的熵数。</div><div class="line">随机字节不够多。请再做一些其他的琐事，以使操作系统能搜集到更多的熵！</div><div class="line">(还需要<span class="number">68</span>字节)</div><div class="line">..........+++++</div><div class="line">随机字节不够多。请再做一些其他的琐事，以使操作系统能搜集到更多的熵！</div><div class="line">(还需要<span class="number">112</span>字节)</div><div class="line">.+++++</div><div class="line">gpg: 密钥 <span class="number">6</span>AB74C2A 被标记为绝对信任</div><div class="line">公钥和私钥已经生成并经签名。</div><div class="line">gpg: 正在检查信任度数据库</div><div class="line">gpg: 需要 <span class="number">3</span> 份勉强信任和 <span class="number">1</span> 份完全信任，PGP 信任模型</div><div class="line">gpg: 深度：<span class="number">0</span> 有效性：  <span class="number">1</span> 已签名：  <span class="number">0</span> 信任度：<span class="number">0</span>-，<span class="number">0</span>q，<span class="number">0</span>n，<span class="number">0</span>m，<span class="number">0</span>f，<span class="number">1</span>u</div><div class="line">pub   <span class="number">2048</span>R/<span class="number">6</span>AB74C2A <span class="number">2014</span>-<span class="number">11</span>-<span class="number">13</span></div><div class="line">密钥指纹 = B116 BC80 CD97 FA44 <span class="number">85</span>F5  <span class="number">595</span>D BB50 B4F3 <span class="number">6</span>AB7 <span class="number">4</span>C2A</div><div class="line">uid                  Bright Pan (ShenZhen) &lt;bright_pan@<span class="number">163</span>.com&gt;</div><div class="line">sub   <span class="number">2048</span>R/B97A1CBE <span class="number">2014</span>-<span class="number">11</span>-<span class="number">13</span></div></pre></td></tr></table></figure>
+
+<h3 id="生成撤销证书">生成撤销证书</h3>
+<p>请注意上面的字符串”B97A1CBE”，这是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --gen-revoke B97A1CBE</div></pre></td></tr></table></figure>
+
+<h2 id="使用">使用</h2>
+<h3 id="打印钥匙列表">打印钥匙列表</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ gpg --list-keys</div><div class="line">/home/bright/.gnupg/pubring.gpg</div><div class="line">-------------------------------</div><div class="line">pub   <span class="number">2048</span>R/<span class="number">6</span>AB74C2A <span class="number">2014</span>-<span class="number">11</span>-<span class="number">13</span></div><div class="line">uid                  Bright Pan (ShenZhen) &lt;bright_pan@<span class="number">163</span>.com&gt;</div><div class="line">sub   <span class="number">2048</span>R/B97A1CBE <span class="number">2014</span>-<span class="number">11</span>-<span class="number">13</span></div></pre></td></tr></table></figure>
+
+<p>第一行显示公钥文件名（pubring.gpg），第二行显示公钥特征（4096位，Hash字符串和生成时间），第三行显示”用户ID”，第四行显示私钥特征。</p>
+<h3 id="删除钥匙">删除钥匙</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --delete-key [用户ID]</div></pre></td></tr></table></figure>
+
+<h3 id="输出钥匙">输出钥匙</h3>
+<p>公钥文件（.gnupg/pubring.gpg）以二进制形式储存，armor参数可以将其转换为ASCII码显示。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --armor --output public-key.txt --export [用户ID]</div></pre></td></tr></table></figure>
+
+<p>“用户ID”指定哪个用户的公钥，output参数指定输出文件名（public-key.txt）。<br>类似地，export-secret-keys参数可以转换私钥。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --armor --output private-key.txt --export-secret-keys</div></pre></td></tr></table></figure>
+
+<h3 id="上传公钥">上传公钥</h3>
+<p>公钥服务器是网络上专门储存用户公钥的服务器。send-keys参数可以将公钥上传到服务器。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --send-keys [用户ID] --keyserver hkp://subkeys.pgp.net</div></pre></td></tr></table></figure>
+
+<p>使用上面的命令，你的公钥就被传到了服务器subkeys.pgp.net，然后通过交换机制，所有的公钥服务器最终都会包含你的公钥。<br>由于公钥服务器没有检查机制，任何人都可以用你的名义上传公钥，所以没有办法保证服务器上的公钥的可靠性。通常，你可以在网站上公布一个公钥指纹，让其他人核对下载到的公钥是否为真。fingerprint参数生成公钥指纹。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --fingerprint [用户ID]</div></pre></td></tr></table></figure>
+
+<h3 id="输入密钥">输入密钥</h3>
+<p>除了生成自己的密钥，还需要将他人的公钥或者你的其他密钥输入系统。这时可以使用import参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --import [密钥文件]</div></pre></td></tr></table></figure>
+
+<p>为了获得他人的公钥，可以让对方直接发给你，或者到公钥服务器上寻找。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --keyserver hkp://subkeys.pgp.net --search-keys [用户ID]</div></pre></td></tr></table></figure>
+
+<p>正如前面提到的，我们无法保证服务器上的公钥是否可靠，下载后还需要用其他机制验证．</p>
+<h3 id="加密">加密</h3>
+<p>假定有一个文本文件demo.txt，怎样对它加密呢？<br>encrypt参数用于加密。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --recipient [用户ID] --output demo.en.txt --encrypt demo.txt</div></pre></td></tr></table></figure>
+
+<p>recipient参数指定接收者的公钥，output参数指定加密后的文件名，encrypt参数指定源文件。运行上面的命令后，demo.en.txt就是已加密的文件，可以把它发给对方。</p>
+<h3 id="解密">解密</h3>
+<p>对方收到加密文件以后，就用自己的私钥解密。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --decrypt demo.en.txt --output demo.de.txt</div></pre></td></tr></table></figure>
+
+<p>decrypt参数指定需要解密的文件，output参数指定解密后生成的文件。运行上面的命令，demo.de.txt就是解密后的文件。<br>GPG允许省略decrypt参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> demo.en.txt</div></pre></td></tr></table></figure>
+
+<p>运行上面的命令以后，解密后的文件内容直接显示在标准输出。</p>
+<h3 id="对文件签名">对文件签名</h3>
+<p>有时，我们不需要加密文件，只需要对文件签名，表示这个文件确实是我本人发出的。sign参数用来签名。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --sign demo.txt</div></pre></td></tr></table></figure>
+
+<p>运行上面的命令后，当前目录下生成demo.txt.gpg文件，这就是签名后的文件。这个文件默认采用二进制储存，如果想生成ASCII码的签名文件，可以使用clearsign参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --clearsign demo.txt</div></pre></td></tr></table></figure>
+
+<p>运行上面的命令后 ，当前目录下生成demo.txt.asc文件，后缀名asc表示该文件是ASCII码形式的。<br>如果想生成单独的签名文件，与文件内容分开存放，可以使用detach-sign参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --detach-sign demo.txt</div></pre></td></tr></table></figure>
+
+<p>运行上面的命令后，当前目录下生成一个单独的签名文件demo.txt.sig。该文件是二进制形式的，如果想采用ASCII码形式，要加上armor参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --armor --detach-sign demo.txt</div></pre></td></tr></table></figure>
+
+<h3 id="签名+加密">签名+加密</h3>
+<p>上一节的参数，都是只签名不加密。如果想同时签名和加密，可以使用下面的命令。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --local-user [发信者ID] --recipient [接收者ID] --armor --sign --encrypt demo.txt</div></pre></td></tr></table></figure>
+
+<p>local-user参数指定用发信者的私钥签名，recipient参数指定用接收者的公钥加密，armor参数表示采用ASCII码形式显示，sign参数表示需要签名，encrypt参数表示指定源文件。</p>
+<h3 id="验证签名">验证签名</h3>
+<p>我们收到别人签名后的文件，需要用对方的公钥验证签名是否为真。verify参数用来验证。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --verify demo.txt.asc demo.txt</div></pre></td></tr></table></figure>
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/gpg/">gpg</a><a href="/tags/gnupg/">gnupg</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/加解密/">加解密</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://bright-pan@github.com/2014/11/13/gpg加解密的使用/" data-title="gpg加解密的使用 | 图符" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/11/13/ubuntu的apt源设置/" title="ubuntu的apt源设置">
+  <strong>上一篇:</strong><br/>
+  <span>
+  ubuntu的apt源设置</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/11/13/git中文路径乱码/"  title="git中文路径乱码">
+ <strong>下一篇:</strong><br/> 
+ <span>git中文路径乱码
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成密钥对"><span class="toc-number">2.1.</span> <span class="toc-text">生成密钥对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成撤销证书"><span class="toc-number">2.2.</span> <span class="toc-text">生成撤销证书</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#打印钥匙列表"><span class="toc-number">3.1.</span> <span class="toc-text">打印钥匙列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除钥匙"><span class="toc-number">3.2.</span> <span class="toc-text">删除钥匙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出钥匙"><span class="toc-number">3.3.</span> <span class="toc-text">输出钥匙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传公钥"><span class="toc-number">3.4.</span> <span class="toc-text">上传公钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入密钥"><span class="toc-number">3.5.</span> <span class="toc-text">输入密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加密"><span class="toc-number">3.6.</span> <span class="toc-text">加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解密"><span class="toc-number">3.7.</span> <span class="toc-text">解密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对文件签名"><span class="toc-number">3.8.</span> <span class="toc-text">对文件签名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#签名+加密"><span class="toc-number">3.9.</span> <span class="toc-text">签名+加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#验证签名"><span class="toc-number">3.10.</span> <span class="toc-text">验证签名</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">8</span></li></ul>
+  </div>
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		
+			<li><a href="/categories/ubuntu/" title="ubuntu">ubuntu<sup>2</sup></a></li>
+		
+			<li><a href="/categories/加解密/" title="加解密">加解密<sup>1</sup></a></li>
+		
+			<li><a href="/categories/设备/" title="设备">设备<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/apt/" title="apt">apt<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+		
+			<li><a href="/tags/gnupg/" title="gnupg">gnupg<sup>1</sup></a></li>
+		
+			<li><a href="/tags/gpg/" title="gpg">gpg<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>2</sup></a></li>
+		
+			<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>1</sup></a></li>
+		
+			<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>2</sup></a></li>
+		
+			<li><a href="/tags/中文路径/" title="中文路径">中文路径<sup>1</sup></a></li>
+		
+			<li><a href="/tags/构思/" title="构思">构思<sup>1</sup></a></li>
+		
+			<li><a href="/tags/网络配置/" title="网络配置">网络配置<sup>1</sup></a></li>
+		
+			<li><a href="/tags/脚本/" title="脚本">脚本<sup>1</sup></a></li>
+		
+			<li><a href="/tags/装置/" title="装置">装置<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2014 
+		
+		<a href="http://bright-pan@github.com" target="_blank" title="Bright Pan">Bright Pan</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"bright-pan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[图符]]></title>
+  <subtitle><![CDATA[一个人的世界]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://bright-pan@github.com/"/>
+  <updated>2014-11-17T04:40:53.139Z</updated>
+  <id>http://bright-pan@github.com/</id>
+  
+  <author>
+    <name><![CDATA[Bright Pan]]></name>
+    <email><![CDATA[bright_pan@163.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[ubuntu静态网络配置]]></title>
+    <link href="http://bright-pan@github.com/2014/11/16/ubuntu%E9%9D%99%E6%80%81%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"/>
+    <id>http://bright-pan@github.com/2014/11/16/ubuntu静态网络配置/</id>
+    <published>2014-11-17T04:25:40.000Z</published>
+    <updated>2014-11-17T04:40:17.000Z</updated>
+    <content type="html"><![CDATA[<p>有时候服务器需要固定静态的IP时，可以做如下配置来设置服务器的静态ip；<br>设置/etc/network/interfaces为如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># interfaces(5) file used by ifup(8) and ifdown(8)</span></div><div class="line">auto lo</div><div class="line">iface lo inet loopback</div><div class="line"><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span></div><div class="line">auto eth0</div><div class="line">iface eth0 inet static</div><div class="line">address <span class="number">192.168</span><span class="number">.1</span><span class="number">.135</span></div><div class="line">netmask <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></div><div class="line">gateway <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span></div><div class="line">network <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span></div><div class="line">dns-nameservers <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span></div></pre></td></tr></table></figure>
+
+<p>然后再执行如下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> ifdown eth0</div><div class="line"><span class="built_in">sudo</span> ifup eth0</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>有时候服务器需要固定静态的IP时，可以做如下配置来设置服务器的静态ip；<br>设置/etc/network/interfaces为如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><d]]>
+    </summary>
+    
+      <category term="网络配置" scheme="http://bright-pan@github.com/tags/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="ubuntu" scheme="http://bright-pan@github.com/tags/ubuntu/"/>
+    
+      <category term="ubuntu" scheme="http://bright-pan@github.com/categories/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[为hexo博客添加自动化配置脚本]]></title>
+    <link href="http://bright-pan@github.com/2014/11/13/%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE%E8%84%9A%E6%9C%AC/"/>
+    <id>http://bright-pan@github.com/2014/11/13/为hexo博客添加自动化配置脚本/</id>
+    <published>2014-11-14T07:59:48.000Z</published>
+    <updated>2014-11-14T08:06:27.000Z</updated>
+    <content type="html"><![CDATA[<p>在不同的机器上写博客的时候需要安装和配置开发环境，所以将这些工作写成脚本，放到hexo工程根目录底下方便调用。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#!/bin/bash</span></div><div class="line"><span class="built_in">sudo</span> apt-get install nodejs npm nodejs-legacy</div><div class="line"><span class="built_in">sudo</span> npm install -g hexo</div><div class="line">npm install</div><div class="line">npm install hexo-generator-feed</div><div class="line">npm install hexo-generator-sitemap</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在不同的机器上写博客的时候需要安装和配置开发环境，所以将这些工作写成脚本，放到hexo工程根目录底下方便调用。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="l]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://bright-pan@github.com/tags/hexo/"/>
+    
+      <category term="脚本" scheme="http://bright-pan@github.com/tags/%E8%84%9A%E6%9C%AC/"/>
+    
+      <category term="hexo" scheme="http://bright-pan@github.com/categories/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://bright-pan@github.com/2014/11/13/hello-world/"/>
+    <id>http://bright-pan@github.com/2014/11/13/hello-world/</id>
+    <published>2014-11-14T07:34:16.000Z</published>
+    <updated>2014-11-14T07:34:16.000Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2>
+<h3 id="Create_a_new_post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[ubuntu的apt源设置]]></title>
+    <link href="http://bright-pan@github.com/2014/11/13/ubuntu%E7%9A%84apt%E6%BA%90%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://bright-pan@github.com/2014/11/13/ubuntu的apt源设置/</id>
+    <published>2014-11-14T00:46:53.000Z</published>
+    <updated>2014-11-17T04:40:17.000Z</updated>
+    <content type="html"><![CDATA[<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$emacs</span> /etc/apt/sources.list</div></pre></td></tr></table></figure>
+
+<p>替换成如下内容：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="title">deb</span> <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty main restricted universe multiverse</div><div class="line">deb <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-security main restricted universe multiverse</div><div class="line">deb <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-updates main restricted universe multiverse</div><div class="line">deb <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-proposed main restricted universe multiverse</div><div class="line">deb <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-backports main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-security main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-updates main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-proposed main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-backports main restricted universe multiverse</div></pre></td></tr></table></figure>
+
+<p>然后更新apt库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> apt-get update</div></pre></td></tr></table></figure>
+
+<p>如果需要更新软件如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> apt-get upgrade</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">]]>
+    </summary>
+    
+      <category term="ubuntu" scheme="http://bright-pan@github.com/tags/ubuntu/"/>
+    
+      <category term="apt" scheme="http://bright-pan@github.com/tags/apt/"/>
+    
+      <category term="ubuntu" scheme="http://bright-pan@github.com/categories/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[gpg加解密的使用]]></title>
+    <link href="http://bright-pan@github.com/2014/11/13/gpg%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://bright-pan@github.com/2014/11/13/gpg加解密的使用/</id>
+    <published>2014-11-13T23:23:18.000Z</published>
+    <updated>2014-11-14T07:34:16.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="安装">安装</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> apt-get install gnupg</div><div class="line"><span class="variable">$gpg</span> --version</div><div class="line">gpg (GnuPG) <span class="number">1.4</span>.<span class="number">16</span></div><div class="line">Copyright (C) <span class="number">2013</span> Free Software Foundation, Inc.</div><div class="line">License GPLv3+: GNU GPL version <span class="number">3</span> or later &lt;http://gnu.org/licenses/gpl.html&gt;</div><div class="line">This is free software: you are free to change and redistribute it.</div><div class="line">There is NO WARRANTY, to the extent permitted by law.</div><div class="line">Home: ~/.gnupg</div><div class="line">支持的算法：</div><div class="line">公钥： RSA, RSA-E, RSA-S, ELG-E, DSA</div><div class="line">对称加密： IDEA, <span class="number">3</span>DES, CAST5, BLOWFISH, AES, AES192, AES256,</div><div class="line">TWOFISH, CAMELLIA128, CAMELLIA192, CAMELLIA256</div><div class="line">散列： MD5, SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224</div><div class="line">压缩： 不压缩, ZIP, ZLIB, BZIP2</div></pre></td></tr></table></figure>
+
+<h2 id="配置">配置</h2>
+<h3 id="生成密钥对">生成密钥对</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line">$ gpg --gen-key</div><div class="line">gpg (GnuPG) <span class="number">1.4</span>.<span class="number">16</span>; Copyright (C) <span class="number">2013</span> Free Software Foundation, Inc.</div><div class="line">This is free software: you are free to change and redistribute it.</div><div class="line">There is NO WARRANTY, to the extent permitted by law.</div><div class="line"></div><div class="line">请选择您要使用的密钥种类：</div><div class="line">(<span class="number">1</span>) RSA and RSA (default)</div><div class="line">(<span class="number">2</span>) DSA and Elgamal</div><div class="line">(<span class="number">3</span>) DSA (仅用于签名)</div><div class="line">(<span class="number">4</span>) RSA (仅用于签名)</div><div class="line">您的选择？ <span class="number">1</span></div><div class="line">RSA 密钥长度应在 <span class="number">1024</span> 位与 <span class="number">4096</span> 位之间。</div><div class="line">您想要用多大的密钥尺寸？(<span class="number">2048</span>)</div><div class="line">您所要求的密钥尺寸是 <span class="number">2048</span> 位</div><div class="line">请设定这把密钥的有效期限。</div><div class="line"><span class="number">0</span> = 密钥永不过期</div><div class="line">&lt;n&gt;  = 密钥在 n 天后过期</div><div class="line">&lt;n&gt;w = 密钥在 n 周后过期</div><div class="line">&lt;n&gt;m = 密钥在 n 月后过期</div><div class="line">&lt;n&gt;y = 密钥在 n 年后过期</div><div class="line">密钥的有效期限是？(<span class="number">0</span>)</div><div class="line">密钥永远不会过期</div><div class="line">以上正确吗？(y/n) y</div><div class="line"></div><div class="line">您需要一个用户标识来辨识您的密钥；本软件会用真实姓名、注释和电子邮件地址组合</div><div class="line">成用户标识，如下所示：</div><div class="line">“Heinrich Heine (Der Dichter) &lt;heinrichh@duesseldorf.de&gt;”</div><div class="line"></div><div class="line">真实姓名： Bright Pan</div><div class="line">电子邮件地址： bright_pan@<span class="number">163</span>.om</div><div class="line">注释：</div><div class="line">gpg: Interrupt caught ... exiting</div><div class="line">bright@bright-ThinkPad-X200-Tablet:~$ gpg --gen-key</div><div class="line">gpg (GnuPG) <span class="number">1.4</span>.<span class="number">16</span>; Copyright (C) <span class="number">2013</span> Free Software Foundation, Inc.</div><div class="line">This is free software: you are free to change and redistribute it.</div><div class="line">There is NO WARRANTY, to the extent permitted by law.</div><div class="line">请选择您要使用的密钥种类：</div><div class="line">(<span class="number">1</span>) RSA and RSA (default)</div><div class="line">(<span class="number">2</span>) DSA and Elgamal</div><div class="line">(<span class="number">3</span>) DSA (仅用于签名)</div><div class="line">(<span class="number">4</span>) RSA (仅用于签名)</div><div class="line">您的选择？</div><div class="line">RSA 密钥长度应在 <span class="number">1024</span> 位与 <span class="number">4096</span> 位之间。</div><div class="line">您想要用多大的密钥尺寸？(<span class="number">2048</span>)</div><div class="line">您所要求的密钥尺寸是 <span class="number">2048</span> 位</div><div class="line">请设定这把密钥的有效期限。</div><div class="line"><span class="number">0</span> = 密钥永不过期</div><div class="line">&lt;n&gt;  = 密钥在 n 天后过期</div><div class="line">&lt;n&gt;w = 密钥在 n 周后过期</div><div class="line">&lt;n&gt;m = 密钥在 n 月后过期</div><div class="line">&lt;n&gt;y = 密钥在 n 年后过期</div><div class="line">密钥的有效期限是？(<span class="number">0</span>)</div><div class="line">密钥永远不会过期</div><div class="line">以上正确吗？(y/n) y</div><div class="line">您需要一个用户标识来辨识您的密钥；本软件会用真实姓名、注释和电子邮件地址组合</div><div class="line">成用户标识，如下所示：</div><div class="line">“Heinrich Heine (Der Dichter) &lt;heinrichh@duesseldorf.de&gt;”</div><div class="line">真实姓名： Bright Pan</div><div class="line">电子邮件地址： bright_pan@<span class="number">163</span>.com</div><div class="line">注释： ShenZhen</div><div class="line">您选定了这个用户标识：</div><div class="line">“Bright Pan (ShenZhen) &lt;bright_pan@<span class="number">163</span>.com&gt;”</div><div class="line">更改姓名(N)、注释(C)、电子邮件地址(E)或确定(O)/退出(Q)？ O</div><div class="line">您需要一个密码来保护您的私钥。</div><div class="line">gpg: gpg-agent 在此次会话中无法使用</div><div class="line">我们需要生成大量的随机字节。这个时候您可以多做些琐事(像是敲打键盘、移动</div><div class="line">鼠标、读写硬盘之类的)，这会让随机数字发生器有更好的机会获得足够的熵数。</div><div class="line">随机字节不够多。请再做一些其他的琐事，以使操作系统能搜集到更多的熵！</div><div class="line">(还需要<span class="number">185</span>字节)</div><div class="line">.+++++</div><div class="line">.+++++</div><div class="line">我们需要生成大量的随机字节。这个时候您可以多做些琐事(像是敲打键盘、移动</div><div class="line">鼠标、读写硬盘之类的)，这会让随机数字发生器有更好的机会获得足够的熵数。</div><div class="line">随机字节不够多。请再做一些其他的琐事，以使操作系统能搜集到更多的熵！</div><div class="line">(还需要<span class="number">68</span>字节)</div><div class="line">..........+++++</div><div class="line">随机字节不够多。请再做一些其他的琐事，以使操作系统能搜集到更多的熵！</div><div class="line">(还需要<span class="number">112</span>字节)</div><div class="line">.+++++</div><div class="line">gpg: 密钥 <span class="number">6</span>AB74C2A 被标记为绝对信任</div><div class="line">公钥和私钥已经生成并经签名。</div><div class="line">gpg: 正在检查信任度数据库</div><div class="line">gpg: 需要 <span class="number">3</span> 份勉强信任和 <span class="number">1</span> 份完全信任，PGP 信任模型</div><div class="line">gpg: 深度：<span class="number">0</span> 有效性：  <span class="number">1</span> 已签名：  <span class="number">0</span> 信任度：<span class="number">0</span>-，<span class="number">0</span>q，<span class="number">0</span>n，<span class="number">0</span>m，<span class="number">0</span>f，<span class="number">1</span>u</div><div class="line">pub   <span class="number">2048</span>R/<span class="number">6</span>AB74C2A <span class="number">2014</span>-<span class="number">11</span>-<span class="number">13</span></div><div class="line">密钥指纹 = B116 BC80 CD97 FA44 <span class="number">85</span>F5  <span class="number">595</span>D BB50 B4F3 <span class="number">6</span>AB7 <span class="number">4</span>C2A</div><div class="line">uid                  Bright Pan (ShenZhen) &lt;bright_pan@<span class="number">163</span>.com&gt;</div><div class="line">sub   <span class="number">2048</span>R/B97A1CBE <span class="number">2014</span>-<span class="number">11</span>-<span class="number">13</span></div></pre></td></tr></table></figure>
+
+<h3 id="生成撤销证书">生成撤销证书</h3>
+<p>请注意上面的字符串”B97A1CBE”，这是”用户ID”的Hash字符串，可以用来替代”用户ID”。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --gen-revoke B97A1CBE</div></pre></td></tr></table></figure>
+
+<h2 id="使用">使用</h2>
+<h3 id="打印钥匙列表">打印钥匙列表</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ gpg --list-keys</div><div class="line">/home/bright/.gnupg/pubring.gpg</div><div class="line">-------------------------------</div><div class="line">pub   <span class="number">2048</span>R/<span class="number">6</span>AB74C2A <span class="number">2014</span>-<span class="number">11</span>-<span class="number">13</span></div><div class="line">uid                  Bright Pan (ShenZhen) &lt;bright_pan@<span class="number">163</span>.com&gt;</div><div class="line">sub   <span class="number">2048</span>R/B97A1CBE <span class="number">2014</span>-<span class="number">11</span>-<span class="number">13</span></div></pre></td></tr></table></figure>
+
+<p>第一行显示公钥文件名（pubring.gpg），第二行显示公钥特征（4096位，Hash字符串和生成时间），第三行显示”用户ID”，第四行显示私钥特征。</p>
+<h3 id="删除钥匙">删除钥匙</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --delete-key [用户ID]</div></pre></td></tr></table></figure>
+
+<h3 id="输出钥匙">输出钥匙</h3>
+<p>公钥文件（.gnupg/pubring.gpg）以二进制形式储存，armor参数可以将其转换为ASCII码显示。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --armor --output public-key.txt --export [用户ID]</div></pre></td></tr></table></figure>
+
+<p>“用户ID”指定哪个用户的公钥，output参数指定输出文件名（public-key.txt）。<br>类似地，export-secret-keys参数可以转换私钥。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --armor --output private-key.txt --export-secret-keys</div></pre></td></tr></table></figure>
+
+<h3 id="上传公钥">上传公钥</h3>
+<p>公钥服务器是网络上专门储存用户公钥的服务器。send-keys参数可以将公钥上传到服务器。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --send-keys [用户ID] --keyserver hkp://subkeys.pgp.net</div></pre></td></tr></table></figure>
+
+<p>使用上面的命令，你的公钥就被传到了服务器subkeys.pgp.net，然后通过交换机制，所有的公钥服务器最终都会包含你的公钥。<br>由于公钥服务器没有检查机制，任何人都可以用你的名义上传公钥，所以没有办法保证服务器上的公钥的可靠性。通常，你可以在网站上公布一个公钥指纹，让其他人核对下载到的公钥是否为真。fingerprint参数生成公钥指纹。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --fingerprint [用户ID]</div></pre></td></tr></table></figure>
+
+<h3 id="输入密钥">输入密钥</h3>
+<p>除了生成自己的密钥，还需要将他人的公钥或者你的其他密钥输入系统。这时可以使用import参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --import [密钥文件]</div></pre></td></tr></table></figure>
+
+<p>为了获得他人的公钥，可以让对方直接发给你，或者到公钥服务器上寻找。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --keyserver hkp://subkeys.pgp.net --search-keys [用户ID]</div></pre></td></tr></table></figure>
+
+<p>正如前面提到的，我们无法保证服务器上的公钥是否可靠，下载后还需要用其他机制验证．</p>
+<h3 id="加密">加密</h3>
+<p>假定有一个文本文件demo.txt，怎样对它加密呢？<br>encrypt参数用于加密。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --recipient [用户ID] --output demo.en.txt --encrypt demo.txt</div></pre></td></tr></table></figure>
+
+<p>recipient参数指定接收者的公钥，output参数指定加密后的文件名，encrypt参数指定源文件。运行上面的命令后，demo.en.txt就是已加密的文件，可以把它发给对方。</p>
+<h3 id="解密">解密</h3>
+<p>对方收到加密文件以后，就用自己的私钥解密。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --decrypt demo.en.txt --output demo.de.txt</div></pre></td></tr></table></figure>
+
+<p>decrypt参数指定需要解密的文件，output参数指定解密后生成的文件。运行上面的命令，demo.de.txt就是解密后的文件。<br>GPG允许省略decrypt参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> demo.en.txt</div></pre></td></tr></table></figure>
+
+<p>运行上面的命令以后，解密后的文件内容直接显示在标准输出。</p>
+<h3 id="对文件签名">对文件签名</h3>
+<p>有时，我们不需要加密文件，只需要对文件签名，表示这个文件确实是我本人发出的。sign参数用来签名。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --sign demo.txt</div></pre></td></tr></table></figure>
+
+<p>运行上面的命令后，当前目录下生成demo.txt.gpg文件，这就是签名后的文件。这个文件默认采用二进制储存，如果想生成ASCII码的签名文件，可以使用clearsign参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --clearsign demo.txt</div></pre></td></tr></table></figure>
+
+<p>运行上面的命令后 ，当前目录下生成demo.txt.asc文件，后缀名asc表示该文件是ASCII码形式的。<br>如果想生成单独的签名文件，与文件内容分开存放，可以使用detach-sign参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --detach-sign demo.txt</div></pre></td></tr></table></figure>
+
+<p>运行上面的命令后，当前目录下生成一个单独的签名文件demo.txt.sig。该文件是二进制形式的，如果想采用ASCII码形式，要加上armor参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --armor --detach-sign demo.txt</div></pre></td></tr></table></figure>
+
+<h3 id="签名+加密">签名+加密</h3>
+<p>上一节的参数，都是只签名不加密。如果想同时签名和加密，可以使用下面的命令。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --local-user [发信者ID] --recipient [接收者ID] --armor --sign --encrypt demo.txt</div></pre></td></tr></table></figure>
+
+<p>local-user参数指定用发信者的私钥签名，recipient参数指定用接收者的公钥加密，armor参数表示采用ASCII码形式显示，sign参数表示需要签名，encrypt参数表示指定源文件。</p>
+<h3 id="验证签名">验证签名</h3>
+<p>我们收到别人签名后的文件，需要用对方的公钥验证签名是否为真。verify参数用来验证。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gpg</span> --verify demo.txt.asc demo.txt</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="安装">安装</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div c]]>
+    </summary>
+    
+      <category term="gpg" scheme="http://bright-pan@github.com/tags/gpg/"/>
+    
+      <category term="gnupg" scheme="http://bright-pan@github.com/tags/gnupg/"/>
+    
+      <category term="加解密" scheme="http://bright-pan@github.com/categories/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[git中文路径乱码]]></title>
+    <link href="http://bright-pan@github.com/2014/11/13/git%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84%E4%B9%B1%E7%A0%81/"/>
+    <id>http://bright-pan@github.com/2014/11/13/git中文路径乱码/</id>
+    <published>2014-11-13T23:13:26.000Z</published>
+    <updated>2014-11-14T07:34:16.000Z</updated>
+    <content type="html"><![CDATA[<p>在执行git status命令的时候，会出现下面的乱码情况</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">位于分支 develop</div><div class="line">您的分支与上游分支 <span class="string">'origin/develop'</span> 一致。</div><div class="line">未跟踪的文件:</div><div class="line">  （使用 <span class="string">"git add &lt;file&gt;..."</span> 以包含要提交的内容）</div><div class="line">   <span class="string">"source/_posts/\350\207\252\345\212\250\346\270\251\346\260\264\345\205\221\346\215\242\350\243\205\347\275\256\347\232\204\346\203\263\346\263\225.md"</span></div></pre></td></tr></table></figure>
+
+<p>解决方法如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ git config --global core.quotepath <span class="literal">false</span></div><div class="line">$ git status</div><div class="line">位于分支 develop</div><div class="line">您的分支与上游分支 <span class="string">'origin/develop'</span> 一致。</div><div class="line">未跟踪的文件:</div><div class="line">  （使用 <span class="string">"git add &lt;file&gt;..."</span> 以包含要提交的内容）</div><div class="line">	<span class="built_in">source</span>/_posts/git中文路径乱码.md</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在执行git status命令的时候，会出现下面的乱码情况</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="li]]>
+    </summary>
+    
+      <category term="git" scheme="http://bright-pan@github.com/tags/git/"/>
+    
+      <category term="中文路径" scheme="http://bright-pan@github.com/tags/%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84/"/>
+    
+      <category term="git" scheme="http://bright-pan@github.com/categories/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[自动温水兑换装置的想法]]></title>
+    <link href="http://bright-pan@github.com/2014/11/13/%E8%87%AA%E5%8A%A8%E6%B8%A9%E6%B0%B4%E5%85%91%E6%8D%A2%E8%A3%85%E7%BD%AE%E7%9A%84%E6%83%B3%E6%B3%95/"/>
+    <id>http://bright-pan@github.com/2014/11/13/自动温水兑换装置的想法/</id>
+    <published>2014-11-13T18:53:22.000Z</published>
+    <updated>2014-11-14T07:34:16.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>几天前的一个早上，突然想起来在冲婴儿奶粉的时候，往往把握不好水的温度，能否有一个装置来辅助完成这个操作？</p>
+</blockquote>
+<ul>
+<li>冲婴儿奶粉的热水首先是不能反复的加热。</li>
+<li>保持卫生及方便清洁。</li>
+<li>操作简单</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<p>几天前的一个早上，突然想起来在冲婴儿奶粉的时候，往往把握不好水的温度，能否有一个装置来辅助完成这个操作？</p>
+</blockquote>
+<ul>
+<li>冲婴儿奶粉的热水首先是不能反复的加热。</li>
+<li>保持卫生及方便清洁。</li>]]>
+    </summary>
+    
+      <category term="构思" scheme="http://bright-pan@github.com/tags/%E6%9E%84%E6%80%9D/"/>
+    
+      <category term="装置" scheme="http://bright-pan@github.com/tags/%E8%A3%85%E7%BD%AE/"/>
+    
+      <category term="设备" scheme="http://bright-pan@github.com/categories/%E8%AE%BE%E5%A4%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[在github中使用hexo定制个人博客]]></title>
+    <link href="http://bright-pan@github.com/2014/11/12/%E5%9C%A8github%E4%B8%AD%E4%BD%BF%E7%94%A8hexo%E5%AE%9A%E5%88%B6%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/"/>
+    <id>http://bright-pan@github.com/2014/11/12/在github中使用hexo定制个人主页/</id>
+    <published>2014-11-13T05:57:12.000Z</published>
+    <updated>2014-11-14T07:34:16.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="建立开发环境">建立开发环境</h2>
+<h3 id="注册github帐号">注册github帐号</h3>
+<blockquote>
+<p>请自行去<a href="https://www.github.com/" target="_blank" rel="external">github</a>中注册帐号，并创建一个以(帐号名.github.com)为名称的代码仓库。</p>
+</blockquote>
+<h3 id="安装git和node-js">安装git和node.js</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> apt-get git-core</div><div class="line"><span class="variable">$sudo</span> apt-get install nodejs-dev</div><div class="line"><span class="variable">$sudo</span> apt-get install npm</div><div class="line"><span class="variable">$sudo</span> apt-get install npm-legacy</div></pre></td></tr></table></figure>
+
+<h3 id="安装hexo并生成初始博客模板">安装hexo并生成初始博客模板</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> npm install -g hexo</div><div class="line"><span class="variable">$hexo</span> init &lt;folder&gt;</div><div class="line"><span class="variable">$cd</span> &lt;folder&gt;</div><div class="line"><span class="variable">$npm</span> install</div><div class="line"><span class="variable">$hexo</span> server</div></pre></td></tr></table></figure>
+
+<p>然后在浏览器里打开<a href="http://localhost:4000" target="_blank" rel="external"><em>http://localhost:4000</em></a></p>
+<h2 id="配置与部署">配置与部署</h2>
+<h3 id="修改配置文件_config-yml">修改配置文件_config.yml</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#Hexo Configuration</span></div><div class="line"><span class="preprocessor">##Docs: http://hexo.io/docs/configuration.html</span></div><div class="line"><span class="preprocessor">##Source: https://github.com/hexojs/hexo/</span></div><div class="line"><span class="preprocessor">#Site</span></div><div class="line"><span class="label">title:</span> 图符</div><div class="line"><span class="label">subtitle:</span> 一个人的世界</div><div class="line"><span class="label">description:</span></div><div class="line"><span class="label">author:</span> Bright Pan</div><div class="line"><span class="label">email:</span> bright_pan<span class="localvars">@163</span>.com</div><div class="line"><span class="label">language:</span> <span class="built_in">zh</span>-CN</div><div class="line"><span class="preprocessor">#URL</span></div><div class="line"><span class="preprocessor">##If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></div><div class="line"><span class="label">url:</span> http://yoursite.com</div><div class="line"><span class="label">root:</span> /</div><div class="line"><span class="label">permalink:</span> :year/:month/:day/:title/</div><div class="line"><span class="label">tag_dir:</span> tags</div><div class="line"><span class="label">archive_dir:</span> archives</div><div class="line"><span class="label">category_dir:</span> categories</div><div class="line"><span class="label">code_dir:</span> downloads/code</div><div class="line"><span class="label">permalink_defaults:</span></div><div class="line"><span class="preprocessor">#Directory</span></div><div class="line"><span class="label">source_dir:</span> source</div><div class="line"><span class="label">public_dir:</span> public</div><div class="line"><span class="preprocessor">#Writing</span></div><div class="line"><span class="label">new_post_name:</span> :title.md <span class="preprocessor"># File name of new posts</span></div><div class="line"><span class="label">default_layout:</span> post</div><div class="line"><span class="label">titlecase:</span> false <span class="preprocessor"># Transform title into titlecase</span></div><div class="line"><span class="label">external_link:</span> true <span class="preprocessor"># Open external links in new tab</span></div><div class="line"><span class="label">filename_case:</span> <span class="number">0</span></div><div class="line"><span class="label">render_drafts:</span> false</div><div class="line"><span class="label">post_asset_folder:</span> false</div><div class="line"><span class="label">relative_link:</span> false</div><div class="line"><span class="label">highlight:</span></div><div class="line">  enable: true</div><div class="line">    line_number: true</div><div class="line">	  tab_replace:</div><div class="line"><span class="preprocessor">#Category & Tag</span></div><div class="line"><span class="label">default_category:</span> uncategorized</div><div class="line"><span class="label">category_map:</span></div><div class="line"><span class="label">tag_map:</span></div><div class="line"><span class="preprocessor">#Archives</span></div><div class="line"><span class="preprocessor">##2: Enable pagination</span></div><div class="line"><span class="preprocessor">##1: Disable pagination</span></div><div class="line"><span class="preprocessor">##0: Fully Disable</span></div><div class="line"><span class="label">archive:</span> <span class="number">2</span></div><div class="line"><span class="label">category:</span> <span class="number">2</span></div><div class="line"><span class="label">tag:</span> <span class="number">2</span></div><div class="line"><span class="preprocessor">#Server</span></div><div class="line"><span class="preprocessor">##Hexo uses Connect as a server</span></div><div class="line"><span class="preprocessor">##You can customize the logger format as defined in</span></div><div class="line"><span class="preprocessor">##http://www.senchalabs.org/connect/logger.html</span></div><div class="line"><span class="label">port:</span> <span class="number">4000</span></div><div class="line"><span class="label">server_ip:</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.12</span></div><div class="line"><span class="label">logger:</span> false</div><div class="line"><span class="label">logger_format:</span> dev</div><div class="line"><span class="preprocessor">#Date / Time format</span></div><div class="line"><span class="preprocessor">##Hexo uses Moment.js to parse and display date</span></div><div class="line"><span class="preprocessor">##You can customize the date format as defined in</span></div><div class="line"><span class="preprocessor">##http://momentjs.com/docs/#/displaying/format/</span></div><div class="line"><span class="label">date_format:</span> MMM D YYYY</div><div class="line"><span class="label">time_format:</span> H:mm:ss</div><div class="line"><span class="preprocessor">#Pagination</span></div><div class="line"><span class="preprocessor">##Set per_page to 0 to disable pagination</span></div><div class="line"><span class="label">per_page:</span> <span class="number">10</span></div><div class="line"><span class="label">pagination_dir:</span> page</div><div class="line"><span class="preprocessor">#Disqus</span></div><div class="line"><span class="label">disqus_shortname:</span></div><div class="line"><span class="preprocessor">#Extensions</span></div><div class="line"><span class="preprocessor">##Plugins: https://github.com/hexojs/hexo/wiki/Plugins</span></div><div class="line"><span class="preprocessor">##Themes: https://github.com/hexojs/hexo/wiki/Themes</span></div><div class="line"><span class="label">theme:</span> pacman</div><div class="line"><span class="label">exclude_generator:</span></div><div class="line"><span class="preprocessor">#Deployment</span></div><div class="line"><span class="preprocessor">##Docs: http://hexo.io/docs/deployment.html</span></div><div class="line"><span class="label">deploy:</span></div><div class="line"><span class="label">type:</span> github</div><div class="line"><span class="label">repo:</span> https://github.com/bright-pan/bright-pan.github.com.git <span class="preprocessor">#填入第一步里自己创建的代码仓库。</span></div><div class="line"><span class="label">branch:</span> master</div></pre></td></tr></table></figure>
+
+<h3 id="发布到github">发布到github</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$hexo</span> generate</div><div class="line"><span class="variable">$hexo</span> deploy</div></pre></td></tr></table></figure>
+
+<h3 id="添加RSS">添加RSS</h3>
+<p>hexo提供了RSS的生成插件，需要手动安装和设置。步骤如下：</p>
+<ul>
+<li>安装RSS插件到本地：<code>npm install hexo-generator-feed</code></li>
+<li>开启RSS功能：编辑<code>hexo/_config.yml</code>，添加如下代码：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plugin<span class="variable">s:</span></div><div class="line">- hexo-generator-feed</div></pre></td></tr></table></figure>
+
+<p>在站点添加链接：</p>
+<ul>
+<li>在<code>themes/light/_config.yml</code>中，编辑 <code>rss: /atom.xml</code></li>
+<li>在<code>themes/light/layout/_partial/header.ejs</code>中，<code>&lt;ul&gt;&lt;/ul&gt;</code>之间，添加一样代码<code>&lt;li&gt; &lt;a href=&quot;/atom.xml&quot;&gt;RSS&lt;/a&gt; &lt;/li&gt;</code></li>
+</ul>
+<h3 id="添加sitemap">添加sitemap</h3>
+<p>同样的，我们使用hexo提供的插件，方法与添加RSS类似。</p>
+<ul>
+<li>安装sitemap到本地：<code>npm install hexo-generator-sitemap</code></li>
+<li>开启sitemap功能：编辑hexo/_config.yml，添加如下代码：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plugin<span class="variable">s:</span></div><div class="line">- hexo-generator-sitemap</div></pre></td></tr></table></figure>
+
+<p>访问zipperary/sitemap.xml即可看到站点地图。不过，sitemap的初衷是给搜索引擎看。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="建立开发环境">建立开发环境</h2>
+<h3 id="注册github帐号">注册github帐号</h3>
+<blockquote>
+<p>请自行去<a href="https://www.github.com/" target="_blank" rel="e]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://bright-pan@github.com/tags/hexo/"/>
+    
+      <category term="github" scheme="http://bright-pan@github.com/tags/github/"/>
+    
+      <category term="nodejs" scheme="http://bright-pan@github.com/tags/nodejs/"/>
+    
+      <category term="hexo" scheme="http://bright-pan@github.com/categories/hexo/"/>
+    
+  </entry>
+  
+</feed>
