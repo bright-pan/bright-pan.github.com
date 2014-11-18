@@ -4,7 +4,7 @@
   <subtitle><![CDATA[一个人的世界]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://bright-pan@github.com/"/>
-  <updated>2014-11-17T04:45:48.525Z</updated>
+  <updated>2014-11-18T07:43:05.106Z</updated>
   <id>http://bright-pan@github.com/</id>
   
   <author>
@@ -241,6 +241,33 @@
       <category term="git" scheme="http://bright-pan@github.com/tags/git/"/>
     
       <category term="中文路径" scheme="http://bright-pan@github.com/tags/%E4%B8%AD%E6%96%87%E8%B7%AF%E5%BE%84/"/>
+    
+      <category term="git" scheme="http://bright-pan@github.com/categories/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[git diff 的几个主要用法]]></title>
+    <link href="http://bright-pan@github.com/2014/11/13/git_diff%E7%9A%84%E4%B8%8D%E5%90%8C%E6%84%8F%E4%B9%89/"/>
+    <id>http://bright-pan@github.com/2014/11/13/git_diff的不同意义/</id>
+    <published>2014-11-13T23:13:26.000Z</published>
+    <updated>2014-11-18T07:38:32.000Z</updated>
+    <content type="html"><![CDATA[<p>由于git的工作区域有3种：work tree，staged, HEAD</p>
+<blockquote>
+<p>work tree: 工作区域<br>staged: 暂存区域<br>HEAD: 提交区域</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git diff (work tree 与 staged)</div><div class="line">$ git diff --cached (staged 与 HEAD）</div><div class="line">$ git diff HEAD (work tree 与 HEAD)</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>由于git的工作区域有3种：work tree，staged, HEAD</p>
+<blockquote>
+<p>work tree: 工作区域<br>staged: 暂存区域<br>HEAD: 提交区域</p>
+</blockquote>
+<figure class="h]]>
+    </summary>
+    
+      <category term="git" scheme="http://bright-pan@github.com/tags/git/"/>
     
       <category term="git" scheme="http://bright-pan@github.com/categories/git/"/>
     

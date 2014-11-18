@@ -4,13 +4,16 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>为hexo博客添加自动化配置脚本 | 图符</title>
+    <title>git diff 的几个主要用法 | 图符</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Bright Pan">
     
-    <meta name="description" content="在不同的机器上写博客的时候需要安装和配置开发环境，所以将这些工作写成脚本，放到hexo工程根目录底下方便调用。
-123456#!/bin/bashsudo apt-get install nodejs npm nodejs-legacysudo npm install -g hexonpm inst">
+    <meta name="description" content="由于git的工作区域有3种：work tree，staged, HEAD
+
+work tree: 工作区域staged: 暂存区域HEAD: 提交区域
+
+123$ git diff (work tree 与 staged)$ git diff --cached (staged 与 HEAD）$ gi">
     
     
     
@@ -73,15 +76,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/11/13/为hexo博客添加自动化配置脚本/" title="为hexo博客添加自动化配置脚本" itemprop="url">为hexo博客添加自动化配置脚本</a>
+      <a href="/2014/11/13/git_diff的不同意义/" title="git diff 的几个主要用法" itemprop="url">git diff 的几个主要用法</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://bright-pan@github.com" title="Bright Pan">Bright Pan</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-11-14T07:59:48.000Z" itemprop="datePublished">11月 13 2014</time>
-    更新日期:<time datetime="2014-11-14T08:06:27.000Z" itemprop="dateModified">11月 14 2014</time>
+    <time datetime="2014-11-13T23:13:26.000Z" itemprop="datePublished">11月 13 2014</time>
+    更新日期:<time datetime="2014-11-18T07:38:32.000Z" itemprop="dateModified">11月 17 2014</time>
     
   </p>
 </header>
@@ -93,8 +96,11 @@
 		
 		</div>
 		
-		<p>在不同的机器上写博客的时候需要安装和配置开发环境，所以将这些工作写成脚本，放到hexo工程根目录底下方便调用。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#!/bin/bash</span></div><div class="line"><span class="built_in">sudo</span> apt-get install nodejs npm nodejs-legacy</div><div class="line"><span class="built_in">sudo</span> npm install -g hexo</div><div class="line">npm install</div><div class="line">npm install hexo-generator-feed</div><div class="line">npm install hexo-generator-sitemap</div></pre></td></tr></table></figure>
+		<p>由于git的工作区域有3种：work tree，staged, HEAD</p>
+<blockquote>
+<p>work tree: 工作区域<br>staged: 暂存区域<br>HEAD: 提交区域</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git diff (work tree 与 staged)</div><div class="line">$ git diff --cached (staged 与 HEAD）</div><div class="line">$ git diff HEAD (work tree 与 HEAD)</div></pre></td></tr></table></figure>
 
   
 	</div>
@@ -102,20 +108,20 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/hexo/">hexo</a><a href="/tags/脚本/">脚本</a>
+  <span></span> <a href="/tags/git/">git</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/hexo/">hexo</a>
+  <a class="article-category-link" href="/categories/git/">git</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://bright-pan@github.com/2014/11/13/为hexo博客添加自动化配置脚本/" data-title="为hexo博客添加自动化配置脚本 | 图符" data-tsina="null" class="share clearfix">
+  <div data-url="http://bright-pan@github.com/2014/11/13/git_diff的不同意义/" data-title="git diff 的几个主要用法 | 图符" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -125,18 +131,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/11/16/ubuntu静态网络配置/" title="ubuntu静态网络配置">
+ <a href="/2014/11/13/git中文路径乱码/" title="git中文路径乱码">
   <strong>上一篇:</strong><br/>
   <span>
-  ubuntu静态网络配置</span>
+  git中文路径乱码</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/11/13/hello-world/"  title="Hello World">
+<a href="/2014/11/13/自动温水兑换装置的想法/"  title="自动温水兑换装置的想法">
  <strong>下一篇:</strong><br/> 
- <span>Hello World
+ <span>自动温水兑换装置的想法
 </span>
 </a>
 </div>
