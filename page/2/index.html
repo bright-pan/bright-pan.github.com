@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>图符</title>
+    <title>第2页 | 图符</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Bright Pan">
@@ -69,170 +69,27 @@
 
   <section class="post" itemscope itemprop="blogPost">
   
-    <a href="/2014/11/19/find-grep组合使用/" title="find_grep组合使用" itemprop="url">
+    <a href="/2014/11/12/在github中使用hexo定制个人主页/" title="在github中使用hexo定制个人博客" itemprop="url">
   
-    <h1 itemprop="name">find_grep组合使用</h1>
+    <h1 itemprop="name">在github中使用hexo定制个人博客</h1>
     
      
-           <p itemprop="description" >查找所有”.h”文件
-1find /PATH -name &quot;*.h&quot;
+           <p itemprop="description" >建立开发环境
+注册github帐号
 
-查找所有”.h”文件中的含有”helloworld”字符串的文件
-12find /PATH -name &quot;*.h&quot; -exec grep -in &quot;helloworld&quot; {} \;find /PATH -n</p>
+请自行去github中注册帐号，并创建一个以(帐号名.github.com)为名称的代码仓库。
+
+安装git和node.js
+1234$sudo apt-get git-core$sudo apt-get install nodejs-dev</p>
         
     
-    <time datetime="2014-11-19T09:10:47.000Z" itemprop="datePublished">11月 19 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/18/git基本配置解释/" title="git基本配置解释" itemprop="url">
-  
-    <h1 itemprop="name">git基本配置解释</h1>
-    
-     
-           <p itemprop="description" >123git config 版本库级配置git config --global 用户级配置git config --system 系统级配置
-
-基本配置
-12345git config --global user.name &quot;Bright Pan&quot;git config --glo</p>
-        
-    
-    <time datetime="2014-11-19T07:40:36.000Z" itemprop="datePublished">11月 18 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/16/ubuntu静态网络配置/" title="ubuntu静态网络配置" itemprop="url">
-  
-    <h1 itemprop="name">ubuntu静态网络配置</h1>
-    
-     
-           <p itemprop="description" >有时候服务器需要固定静态的IP时，可以做如下配置来设置服务器的静态ip；设置/etc/network/interfaces为如下：
-1234567891011# interfaces(5) file used by ifup(8) and ifdown(8)auto loifac</p>
-        
-    
-    <time datetime="2014-11-17T04:25:40.000Z" itemprop="datePublished">11月 16 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/13/为hexo博客添加自动化配置脚本/" title="为hexo博客添加自动化配置脚本" itemprop="url">
-  
-    <h1 itemprop="name">为hexo博客添加自动化配置脚本</h1>
-    
-     
-           <p itemprop="description" >在不同的机器上写博客的时候需要安装和配置开发环境，所以将这些工作写成脚本，放到hexo工程根目录底下方便调用。
-123456#!/bin/bashsudo apt-get install nodejs npm nodejs-legacysudo npm install -g he</p>
-        
-    
-    <time datetime="2014-11-14T07:59:48.000Z" itemprop="datePublished">11月 13 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/13/hello-world/" title="Hello World" itemprop="url">
-  
-    <h1 itemprop="name">Hello World</h1>
-    
-     
-           <p itemprop="description" >Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the </p>
-        
-    
-    <time datetime="2014-11-14T07:34:16.000Z" itemprop="datePublished">11月 13 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/13/ubuntu的apt源设置/" title="ubuntu的apt源设置" itemprop="url">
-  
-    <h1 itemprop="name">ubuntu的apt源设置</h1>
-    
-     
-           <p itemprop="description" >1$emacs /etc/apt/sources.list
-
-替换成如下内容：
-12345678910deb http://mirrors.ustc.edu.cn/ubuntu/ trusty main restricted universe multiversedeb http</p>
-        
-    
-    <time datetime="2014-11-14T00:46:53.000Z" itemprop="datePublished">11月 13 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/13/gpg加解密的使用/" title="gpg加解密的使用" itemprop="url">
-  
-    <h1 itemprop="name">gpg加解密的使用</h1>
-    
-     
-           <p itemprop="description" >安装
-1234567891011121314$sudo apt-get install gnupg$gpg --versiongpg (GnuPG) 1.4.16Copyright (C) 2013 Free Software Foundation, Inc.License GP</p>
-        
-    
-    <time datetime="2014-11-13T23:23:18.000Z" itemprop="datePublished">11月 13 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/13/git_diff的不同意义/" title="git diff 的几个主要用法" itemprop="url">
-  
-    <h1 itemprop="name">git diff 的几个主要用法</h1>
-    
-     
-           <p itemprop="description" >由于git的工作区域有3种：work tree，staged, HEAD
-
-work tree: 工作区域staged: 暂存区域HEAD: 提交区域
-
-123$ git diff (work tree 与 staged)$ git diff --cached (staged 与</p>
-        
-    
-    <time datetime="2014-11-13T23:13:26.000Z" itemprop="datePublished">11月 13 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/13/git中文路径乱码/" title="git中文路径乱码" itemprop="url">
-  
-    <h1 itemprop="name">git中文路径乱码</h1>
-    
-     
-           <p itemprop="description" >在执行git status命令的时候，会出现下面的乱码情况
-123456$ git status位于分支 develop您的分支与上游分支 &#39;origin/develop&#39; 一致。未跟踪的文件:  （使用 &quot;git add &amp;lt;file&amp;gt;...&quot; 以包含要提交的内容） </p>
-        
-    
-    <time datetime="2014-11-13T23:13:26.000Z" itemprop="datePublished">11月 13 2014</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2014/11/13/自动温水兑换装置的想法/" title="自动温水兑换装置的想法" itemprop="url">
-  
-    <h1 itemprop="name">自动温水兑换装置的想法</h1>
-    
-     
-           <p itemprop="description" >几天前的一个早上，突然想起来在冲婴儿奶粉的时候，往往把握不好水的温度，能否有一个装置来辅助完成这个操作？
-
-
-冲婴儿奶粉的热水首先是不能反复的加热。
-保持卫生及方便清洁。
-操作简单</p>
-        
-    
-    <time datetime="2014-11-13T18:53:22.000Z" itemprop="datePublished">11月 13 2014</time>
+    <time datetime="2014-11-13T05:57:12.000Z" itemprop="datePublished">11月 12 2014</time>
   </a>
 </section>
 
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </div>

@@ -4,13 +4,16 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>git中文路径乱码 | 图符</title>
+    <title>find_grep组合使用 | 图符</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Bright Pan">
     
-    <meta name="description" content="在执行git status命令的时候，会出现下面的乱码情况
-123456$ git status位于分支 develop您的分支与上游分支 &#39;origin/develop&#39; 一致。未跟踪的文件:  （使用 &quot;git add &amp;lt;file&amp;gt;...&quot; 以包含要提交的内容）   &quot;source/">
+    <meta name="description" content="查找所有”.h”文件
+1find /PATH -name &quot;*.h&quot;
+
+查找所有”.h”文件中的含有”helloworld”字符串的文件
+12find /PATH -name &quot;*.h&quot; -exec grep -in &quot;helloworld&quot; {} \;find /PATH -name &quot;*.h&quot; ">
     
     
     
@@ -73,15 +76,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/11/13/git中文路径乱码/" title="git中文路径乱码" itemprop="url">git中文路径乱码</a>
+      <a href="/2014/11/19/find-grep组合使用/" title="find_grep组合使用" itemprop="url">find_grep组合使用</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://bright-pan@github.com" title="Bright Pan">Bright Pan</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-11-13T23:13:26.000Z" itemprop="datePublished">11月 13 2014</time>
-    更新日期:<time datetime="2014-11-14T07:34:16.000Z" itemprop="dateModified">11月 13 2014</time>
+    <time datetime="2014-11-19T09:10:47.000Z" itemprop="datePublished">11月 19 2014</time>
+    更新日期:<time datetime="2014-11-19T09:14:43.000Z" itemprop="dateModified">11月 19 2014</time>
     
   </p>
 </header>
@@ -90,35 +93,42 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#查找所有”-h”文件"><span class="toc-number">1.</span> <span class="toc-text">查找所有”.h”文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找所有”-h”文件中的含有”helloworld”字符串的文件"><span class="toc-number">2.</span> <span class="toc-text">查找所有”.h”文件中的含有”helloworld”字符串的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找所有”-h”和”-c”文件中的含有”helloworld”字符串的文件"><span class="toc-number">3.</span> <span class="toc-text">查找所有”.h”和”.c”文件中的含有”helloworld”字符串的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找非备份文件中的含有”helloworld”字符串的文件"><span class="toc-number">4.</span> <span class="toc-text">查找非备份文件中的含有”helloworld”字符串的文件</span></a></li></ol>
 		</div>
 		
-		<p>在执行git status命令的时候，会出现下面的乱码情况</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">位于分支 develop</div><div class="line">您的分支与上游分支 <span class="string">'origin/develop'</span> 一致。</div><div class="line">未跟踪的文件:</div><div class="line">  （使用 <span class="string">"git add &lt;file&gt;..."</span> 以包含要提交的内容）</div><div class="line">   <span class="string">"source/_posts/\350\207\252\345\212\250\346\270\251\346\260\264\345\205\221\346\215\242\350\243\205\347\275\256\347\232\204\346\203\263\346\263\225.md"</span></div></pre></td></tr></table></figure>
+		<h3 id="查找所有”-h”文件">查找所有”.h”文件</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find /PATH -name <span class="string">"*.h"</span></div></pre></td></tr></table></figure>
 
-<p>解决方法如下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ git config --global core.quotepath <span class="literal">false</span></div><div class="line">$ git status</div><div class="line">位于分支 develop</div><div class="line">您的分支与上游分支 <span class="string">'origin/develop'</span> 一致。</div><div class="line">未跟踪的文件:</div><div class="line">  （使用 <span class="string">"git add &lt;file&gt;..."</span> 以包含要提交的内容）</div><div class="line">	<span class="built_in">source</span>/_posts/git中文路径乱码.md</div></pre></td></tr></table></figure>
+<h3 id="查找所有”-h”文件中的含有”helloworld”字符串的文件">查找所有”.h”文件中的含有”helloworld”字符串的文件</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find /PATH -name <span class="string">"*.h"</span> -exec grep -in <span class="string">"helloworld"</span> {} \;</div><div class="line">find /PATH -name <span class="string">"*.h"</span> | xargs grep -in <span class="string">"helloworld"</span></div></pre></td></tr></table></figure>
 
+<h3 id="查找所有”-h”和”-c”文件中的含有”helloworld”字符串的文件">查找所有”.h”和”.c”文件中的含有”helloworld”字符串的文件</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find /PATH /( -name <span class="string">"*.h"</span> -or -name <span class="string">"*.c"</span> /) -exec grep -in <span class="string">"helloworld"</span> {} \;</div></pre></td></tr></table></figure>
+
+<h3 id="查找非备份文件中的含有”helloworld”字符串的文件">查找非备份文件中的含有”helloworld”字符串的文件</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find /PATH /( -not -name <span class="string">"*~"</span> /) -exec grep -in <span class="string">"helloworld"</span> {} \;</div></pre></td></tr></table></figure>
+
+<p>注：/PATH为查找路径，默认为当前路径。带-exec参数时必须以\;结尾，否则会提示“find: 遗漏“-exec”的参数”。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/git/">git</a><a href="/tags/中文路径/">中文路径</a>
+  <span></span> <a href="/tags/linux/">linux</a><a href="/tags/find/">find</a><a href="/tags/grep/">grep</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/git/">git</a>
+  <a class="article-category-link" href="/categories/linux/">linux</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://bright-pan@github.com/2014/11/13/git中文路径乱码/" data-title="git中文路径乱码 | 图符" data-tsina="null" class="share clearfix">
+  <div data-url="http://bright-pan@github.com/2014/11/19/find-grep组合使用/" data-title="find_grep组合使用 | 图符" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -127,19 +137,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/11/13/git_diff的不同意义/" title="git diff 的几个主要用法">
-  <strong>上一篇:</strong><br/>
-  <span>
-  git diff 的几个主要用法</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2014/11/13/自动温水兑换装置的想法/"  title="自动温水兑换装置的想法">
+<a href="/2014/11/18/git基本配置解释/"  title="git基本配置解释">
  <strong>下一篇:</strong><br/> 
- <span>自动温水兑换装置的想法
+ <span>git基本配置解释
 </span>
 </a>
 </div>
@@ -156,7 +158,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#查找所有”-h”文件"><span class="toc-number">1.</span> <span class="toc-text">查找所有”.h”文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找所有”-h”文件中的含有”helloworld”字符串的文件"><span class="toc-number">2.</span> <span class="toc-text">查找所有”.h”文件中的含有”helloworld”字符串的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找所有”-h”和”-c”文件中的含有”helloworld”字符串的文件"><span class="toc-number">3.</span> <span class="toc-text">查找所有”.h”和”.c”文件中的含有”helloworld”字符串的文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查找非备份文件中的含有”helloworld”字符串的文件"><span class="toc-number">4.</span> <span class="toc-text">查找非备份文件中的含有”helloworld”字符串的文件</span></a></li></ol>
   </div>
 
 <div id="asidepart">
