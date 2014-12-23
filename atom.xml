@@ -4,7 +4,7 @@
   <subtitle><![CDATA[一个人的世界]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://bright-pan@github.com/"/>
-  <updated>2014-11-19T09:19:18.471Z</updated>
+  <updated>2014-12-23T09:26:57.877Z</updated>
   <id>http://bright-pan@github.com/</id>
   
   <author>
@@ -13,6 +13,52 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[lua开发环境配置]]></title>
+    <link href="http://bright-pan@github.com/2014/12/22/lua%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>http://bright-pan@github.com/2014/12/22/lua开发环境配置/</id>
+    <published>2014-12-23T03:02:25.000Z</published>
+    <updated>2014-12-23T03:10:20.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="安装curl">安装curl</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install curl</div></pre></td></tr></table></figure>
+
+<h2 id="安装libreadline-dev">安装libreadline-dev</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install libreadline-dev</div></pre></td></tr></table></figure>
+
+<h2 id="lua下载、编译、安装">lua下载、编译、安装</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">curl -R -O http://www.lua.org/ftp/lua-<span class="number">5.2</span>.<span class="number">3</span>.tar.gz</div><div class="line">tar zxf lua-<span class="number">5.2</span>.<span class="number">3</span>.tar.gz</div><div class="line"><span class="built_in">cd</span> lua-<span class="number">5.2</span>.<span class="number">3</span></div><div class="line">make linux test</div><div class="line"><span class="built_in">sudo</span> make install</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="安装curl">安装curl</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="c]]>
+    </summary>
+    
+      <category term="lua" scheme="http://bright-pan@github.com/tags/lua/"/>
+    
+      <category term="lua" scheme="http://bright-pan@github.com/categories/lua/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[hexo的一些常用命令]]></title>
+    <link href="http://bright-pan@github.com/2014/12/22/hexo%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://bright-pan@github.com/2014/12/22/hexo的一些常用命令/</id>
+    <published>2014-12-23T02:55:56.000Z</published>
+    <updated>2014-12-23T03:01:08.000Z</updated>
+    <content type="html"><![CDATA[<figure class="highlight code"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="title">hexo</span> g <span class="comment">#生成静态网站。</span></div><div class="line">hexo d <span class="comment">#部署静态网站。</span></div><div class="line">hexo n XXXX <span class="comment">#增加一篇文章。</span></div><div class="line">hexo s <span class="comment">#开启调试服务程序。</span></div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<figure class="highlight code"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://bright-pan@github.com/tags/hexo/"/>
+    
+      <category term="hexo" scheme="http://bright-pan@github.com/categories/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[find_grep组合使用]]></title>
@@ -134,7 +180,7 @@
     <link href="http://bright-pan@github.com/2014/11/13/%E4%B8%BAhexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%85%8D%E7%BD%AE%E8%84%9A%E6%9C%AC/"/>
     <id>http://bright-pan@github.com/2014/11/13/为hexo博客添加自动化配置脚本/</id>
     <published>2014-11-14T07:59:48.000Z</published>
-    <updated>2014-11-14T08:06:27.000Z</updated>
+    <updated>2014-12-23T02:58:16.000Z</updated>
     <content type="html"><![CDATA[<p>在不同的机器上写博客的时候需要安装和配置开发环境，所以将这些工作写成脚本，放到hexo工程根目录底下方便调用。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="shebang">#!/bin/bash</span></div><div class="line"><span class="built_in">sudo</span> apt-get install nodejs npm nodejs-legacy</div><div class="line"><span class="built_in">sudo</span> npm install -g hexo</div><div class="line">npm install</div><div class="line">npm install hexo-generator-feed</div><div class="line">npm install hexo-generator-sitemap</div></pre></td></tr></table></figure>
 
@@ -188,11 +234,11 @@
     <link href="http://bright-pan@github.com/2014/11/13/ubuntu%E7%9A%84apt%E6%BA%90%E8%AE%BE%E7%BD%AE/"/>
     <id>http://bright-pan@github.com/2014/11/13/ubuntu的apt源设置/</id>
     <published>2014-11-14T00:46:53.000Z</published>
-    <updated>2014-11-17T04:40:17.000Z</updated>
+    <updated>2014-12-23T02:52:20.000Z</updated>
     <content type="html"><![CDATA[<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$emacs</span> /etc/apt/sources.list</div></pre></td></tr></table></figure>
 
 <p>替换成如下内容：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="title">deb</span> <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty main restricted universe multiverse</div><div class="line">deb <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-security main restricted universe multiverse</div><div class="line">deb <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-updates main restricted universe multiverse</div><div class="line">deb <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-proposed main restricted universe multiverse</div><div class="line">deb <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-backports main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-security main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-updates main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-proposed main restricted universe multiverse</div><div class="line">deb-src <span class="url">http://mirrors.ustc.edu.cn/ubuntu/</span> trusty-backports main restricted universe multiverse</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty main restricted universe multiverse</div><div class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty main restricted universe multiverse</div><div class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ trusty-backports main restricted universe multiverse</div></pre></td></tr></table></figure>
 
 <p>然后更新apt库：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> apt-get update</div></pre></td></tr></table></figure>
