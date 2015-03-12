@@ -4,7 +4,7 @@
   <subtitle><![CDATA[一个人的世界]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://bright-pan@github.com/"/>
-  <updated>2014-12-23T09:26:57.877Z</updated>
+  <updated>2015-03-12T02:56:02.991Z</updated>
   <id>http://bright-pan@github.com/</id>
   
   <author>
@@ -13,6 +13,37 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[linux添加用户、用户目录及权限设置]]></title>
+    <link href="http://bright-pan@github.com/2015/03/11/linux%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E3%80%81%E7%94%A8%E6%88%B7%E7%9B%AE%E5%BD%95%E5%8F%8A%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://bright-pan@github.com/2015/03/11/linux添加用户、用户目录及权限设置/</id>
+    <published>2015-03-12T02:18:04.000Z</published>
+    <updated>2015-03-12T02:49:17.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="创建用户wzw并设置密码：">创建用户wzw并设置密码：</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> useradd <span class="operator">-d</span> /home/wzw <span class="operator">-s</span> /bin/bash wzw</div><div class="line"><span class="variable">$id</span> wzw</div><div class="line"><span class="variable">$sudo</span> cat /etc/passwd | grep <span class="string">"wzw"</span></div><div class="line"><span class="variable">$sudo</span> passwd wzw</div></pre></td></tr></table></figure>
+
+<h2 id="创建用户目录并设置其所有人和组：">创建用户目录并设置其所有人和组：</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> mkdir /home/wzw</div><div class="line"><span class="variable">$sudo</span> chown wzw:wzw /home/wzw</div></pre></td></tr></table></figure>
+
+<h2 id="设置用户目录权限：">设置用户目录权限：</h2>
+<p>例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$ ls -l <span class="regexp">/bin/</span>bash</div><div class="line">-rwxr-xr-x    <span class="number">1</span> root     wheel      <span class="number">430540</span> Dec <span class="number">23</span> <span class="number">18</span>:<span class="number">27</span> <span class="regexp">/bin/</span>bash</div><div class="line">第一个字段 -rwxr-xr-x 包含该特殊文件的权限的符号表示。该字段中的首字符（-）指定该文件的类型，本例中它是一个常规文件。其它可能的首字符还有：</div><div class="line">“d”目录</div><div class="line">“l”符号链接</div><div class="line">“c”字符专门设备文件</div><div class="line">“b”块专门设备文件</div><div class="line">“p”先进先出</div><div class="line">“s”套接字</div><div class="line">三个三元组</div><div class="line">$ ls -l <span class="regexp">/bin/</span>bash</div><div class="line">-rwxr-xr-x    <span class="number">1</span> root     wheel      <span class="number">430540</span> Dec <span class="number">23</span> <span class="number">18</span>:<span class="number">27</span> <span class="regexp">/bin/</span>bash</div><div class="line">该字段的其余部分由三个三元组字符组成。第一个三元字符组代表文件所有者的权限，第二个代表文件的组的权限，第三个代表所有其他用户的权限：</div><div class="line"><span class="string">"rwx"</span></div><div class="line"><span class="string">"r-x"</span></div><div class="line"><span class="string">"r-x"</span></div><div class="line">上面，r 表示允许读（查看文件中的数据），w 表示允许写（修改文件以及删除），x 表示允许“执行”（运行程序）。将所有这些信息放在一起，我们可以发现每个人都能够读该文件的内容和执行该文件，但是只允许文件所有者（root 用户）可以以任何方式修改该文件。因此，虽然一般用户可以复制该文件，但是只允许 root 用户更新或删除它。</div></pre></td></tr></table></figure>
+
+<p>所以如果想让其他用户看不到用户wzw的主目录/home/wzw可以设置该目录其他用户不可读就行了。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> <span class="keyword">chmod</span> <span class="number">700</span> /home/wzw</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="创建用户wzw并设置密码：">创建用户wzw并设置密码：</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div clas]]>
+    </summary>
+    
+      <category term="linux" scheme="http://bright-pan@github.com/tags/linux/"/>
+    
+      <category term="linux" scheme="http://bright-pan@github.com/categories/linux/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[lua开发环境配置]]></title>
@@ -154,12 +185,12 @@
     <link href="http://bright-pan@github.com/2014/11/16/ubuntu%E9%9D%99%E6%80%81%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"/>
     <id>http://bright-pan@github.com/2014/11/16/ubuntu静态网络配置/</id>
     <published>2014-11-17T04:25:40.000Z</published>
-    <updated>2014-11-17T04:40:17.000Z</updated>
+    <updated>2015-03-12T02:16:08.000Z</updated>
     <content type="html"><![CDATA[<p>有时候服务器需要固定静态的IP时，可以做如下配置来设置服务器的静态ip；<br>设置/etc/network/interfaces为如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># interfaces(5) file used by ifup(8) and ifdown(8)</span></div><div class="line">auto lo</div><div class="line">iface lo inet loopback</div><div class="line"><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span><span class="comment">######</span></div><div class="line">auto eth0</div><div class="line">iface eth0 inet static</div><div class="line">address <span class="number">192.168</span><span class="number">.1</span><span class="number">.135</span></div><div class="line">netmask <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></div><div class="line">gateway <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span></div><div class="line">network <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span></div><div class="line">dns-nameservers <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span></div></pre></td></tr></table></figure>
 
 <p>然后再执行如下命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> ifdown eth0</div><div class="line"><span class="built_in">sudo</span> ifup eth0</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> ifconfig eth0 down</div><div class="line"><span class="built_in">sudo</span> ifconfig eth0 up</div></pre></td></tr></table></figure>
 
 ]]></content>
     <summary type="html">
