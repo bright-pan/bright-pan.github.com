@@ -4,7 +4,7 @@
   <subtitle><![CDATA[一个人的世界]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://bright-pan@github.com/"/>
-  <updated>2015-03-12T02:56:02.991Z</updated>
+  <updated>2015-03-13T01:49:14.019Z</updated>
   <id>http://bright-pan@github.com/</id>
   
   <author>
@@ -13,6 +13,39 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[vsftpd安装与配置]]></title>
+    <link href="http://bright-pan@github.com/2015/03/11/vsftpd%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+    <id>http://bright-pan@github.com/2015/03/11/vsftpd安装与配置/</id>
+    <published>2015-03-12T03:09:23.000Z</published>
+    <updated>2015-03-13T01:48:55.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="安装vsftpd">安装vsftpd</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">sudo</span> apt-get install vsftpd</div></pre></td></tr></table></figure>
+
+<h2 id="配置vsftpd-conf">配置vsftpd.conf</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#接受匿名用户</span></div><div class="line"><span class="comment">#anonymous_enable=YES</span></div><div class="line"><span class="comment">#匿名用户login时不询问口令</span></div><div class="line"><span class="comment">#no_anon_password=YES</span></div><div class="line"><span class="comment">#接受本地用户</span></div><div class="line"><span class="variable">local_enable=</span>YES</div><div class="line"></div><div class="line"><span class="comment">#可以上传(全局控制).若想要匿名用户也可上传则需要设置anon_upload_enable=YES,若想要匿名用户可以建立目录则需要设置anon_mkdir_write_enable=YES.这里禁止匿名用户上传,所以不设置这两项.</span></div><div class="line"><span class="variable">write_enable=</span>YES</div><div class="line"><span class="comment">#本地用户上传文件的umask</span></div><div class="line"><span class="variable">local_umask=</span><span class="number">022</span></div><div class="line"></div><div class="line"><span class="comment">#使用上传/下载日志,日志文件默认为/var/log/vsftpd.log,可以通过xferlog_file选项修改</span></div><div class="line"><span class="variable">xferlog_enable=</span>YES</div><div class="line"><span class="comment">#日志使用标准xferlog格式</span></div><div class="line"><span class="variable">xferlog_std_format=</span>YES</div><div class="line"></div><div class="line"><span class="comment">#login时的欢迎信息</span></div><div class="line"><span class="variable">ftpd_banner=</span>Welcome to KingArthur's FTP service.</div><div class="line"><span class="comment">#设置的话将覆盖上面的ftpd_banner设置,用户login时将显示/etc/vsftpd/banner中的内容</span></div><div class="line"><span class="comment">#banner_file=/etc/vsftpd/banner</span></div><div class="line"><span class="comment">#为YES则进入目录时显示此目录下由message_file选项指定的文本文件(,默认为.message)的内容</span></div><div class="line"><span class="variable">dirmessage_enable=</span>YES</div><div class="line"><span class="comment">#本地用户login后所在目录,若没有设置此项,则本地用户login后将在他的home目录(/etc/passwd的第六个字段)中.匿名用户的对应选项是anon_root</span></div><div class="line"><span class="variable">local_root=</span>/var/ftp</div><div class="line"></div><div class="line"><span class="comment">#设置为YES则下面的控制有效</span></div><div class="line"><span class="comment">#chroot_list_enable=YES</span></div><div class="line"><span class="comment">#若为NO,则记录在chroot_list_file选项所指定的文件(默认是/etc/vsftpd.chroot_list)中的用户将被chroot在登录后所在目录中,无法离开.如果为YES,则所记录的用户将不被chroot.这里选择YES.</span></div><div class="line"><span class="comment">#chroot_local_user=YES</span></div><div class="line"></div><div class="line"><span class="comment">#若设置为YES则记录在userlist_file选项指定文件(默认是/etc/vsftpd.user_list)中的用户将无法login,并且将检察下面的userlist_deny选项</span></div><div class="line"><span class="variable">userlist_enable=</span>YES</div><div class="line"><span class="comment">#若为NO,则仅接受记录在userlist_file选项指定文件(默认是/etc/vsftpd.user_list)中的用户的login请求.若为YES则不接受这些用户的请求.</span></div><div class="line"><span class="variable">userlist_deny=</span>NO</div><div class="line"><span class="comment">#注意!!!vsftpd还要检察/etc/vsftpd.ftpusers文件,记录在这个文件中的用户将无法login!!</span></div><div class="line"></div><div class="line"><span class="comment">#服务器以standalong模式运行,这样可以进行下面的控制</span></div><div class="line"><span class="variable">listen=</span>YES</div><div class="line"><span class="comment">#匿名用户的传输比率(b/s)</span></div><div class="line"><span class="variable">anon_max_rate=</span><span class="number">51200</span></div><div class="line"><span class="comment">#本地用户的传输比率(b/s)</span></div><div class="line"><span class="variable">local_max_rate=</span><span class="number">512000</span></div><div class="line"><span class="comment">#可接受的最大client数目</span></div><div class="line"><span class="variable">max_clients=</span><span class="number">100</span></div></pre></td></tr></table></figure>
+
+<h2 id="建立/var/ftp文件夹">建立/var/ftp文件夹</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /<span class="keyword">var</span>/ftp</div><div class="line">sudo chmod <span class="number">755</span> /<span class="keyword">var</span>/ftp</div><div class="line"><span class="preprocessor">#建立用户可用目录，并设置权限。</span></div><div class="line">sudo mkdir /<span class="keyword">var</span>/ftp/wzw</div><div class="line">sudo chmod <span class="number">750</span> /<span class="keyword">var</span>/ftp/wzw</div></pre></td></tr></table></figure>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="安装vsftpd">安装vsftpd</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="]]>
+    </summary>
+    
+      <category term="vsftpd" scheme="http://bright-pan@github.com/tags/vsftpd/"/>
+    
+      <category term="安装" scheme="http://bright-pan@github.com/tags/%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="配置" scheme="http://bright-pan@github.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="linux" scheme="http://bright-pan@github.com/categories/linux/"/>
+    
+      <category term="vsftpd" scheme="http://bright-pan@github.com/categories/linux/vsftpd/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[linux添加用户、用户目录及权限设置]]></title>
